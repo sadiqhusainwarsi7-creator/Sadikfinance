@@ -1,0 +1,1808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funded Account Guide: How Prop Firm Challenges & Payouts Work | Sadik Finance</title>
+<meta name="description" content="A complete guide to funded trading accounts — how prop firms work, evaluation challenges, profit targets, drawdown rules, consistency rules, and how payouts and scaling plans actually function.">
+<meta name="keywords" content="funded account, prop firm challenge, funded trading account, prop firm evaluation, profit target prop firm, prop firm drawdown rules, prop firm payout, scaling plan prop firm">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sadikfinance.com/funded-account-guide.html">
+<meta property="og:title" content="Funded Account Guide: How Prop Firm Challenges & Payouts Work">
+<meta property="og:description" content="A complete guide to funded trading accounts — how prop firms work, evaluation challenges, profit targets, drawdown rules, consistency rules, and how payouts and scaling plans actually function.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://sadikfinance.com/funded-account-guide.html">
+<meta name="theme-color" content="#0B1220">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Funded Account Guide: How Prop Firm Challenges & Payouts Work",
+  "description": "A complete guide to funded trading accounts — how prop firms work, evaluation challenges, profit targets, drawdown rules, consistency rules, and how payouts and scaling plans actually function.",
+  "author": { "@type": "Organization", "name": "Sadik Finance" },
+  "publisher": { "@type": "Organization", "name": "Sadik Finance" },
+  "mainEntityOfPage": "https://sadikfinance.com/funded-account-guide.html"
+}
+</script>
+<style>
+
+/* =========================================================
+   SADIK FINANCE — DESIGN TOKENS
+========================================================= */
+:root{
+  --bg: #0B1220;
+  --bg-rgb: 11,18,32;
+  --card: #111827;
+  --card-rgb: 17,24,39;
+  --primary: #14F195;
+  --primary-rgb: 20,241,149;
+  --secondary: #00C2FF;
+  --secondary-rgb: 0,194,255;
+  --text: #FFFFFF;
+  --muted: #94A3B8;
+  --border: rgba(148,163,184,0.14);
+  --border-strong: rgba(148,163,184,0.24);
+
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.03) inset, 0 20px 50px -25px rgba(0,0,0,0.6);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+*,*::before,*::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+html,body{ margin:0; padding:0; }
+
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img{ max-width:100%; display:block; }
+a{ color: inherit; text-decoration: none; }
+button{ font-family: inherit; cursor: pointer; }
+ul{ margin:0; padding:0; }
+h1,h2,h3,h4{ margin:0; font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; }
+p{ margin:0; }
+
+.sr-only{
+  position:absolute; width:1px; height:1px; overflow:hidden;
+  clip:rect(0,0,0,0); white-space:nowrap;
+}
+
+.skip-link{
+  position:absolute; left:-9999px; top:0; z-index:200;
+  background:var(--primary); color:#03150D; padding:10px 16px; border-radius: 0 0 10px 0;
+  font-weight:700; font-size:14px;
+}
+.skip-link:focus{ left:0; }
+
+:focus-visible{
+  outline: 2px solid var(--secondary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* =========================================================
+   LAYOUT HELPERS
+========================================================= */
+.section-inner{
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.section{ padding: 120px 0; position: relative; }
+@media (max-width: 768px){
+  .section{ padding: 84px 0; }
+  .section-inner{ padding: 0 20px; }
+}
+
+.section-head{ max-width: 640px; margin-bottom: 56px; }
+.section-head--row{
+  display:flex; align-items:flex-end; justify-content:space-between;
+  max-width: none; gap: 24px;
+}
+.section-head-link{ flex-shrink:0; padding-bottom: 6px; }
+
+.section-title{
+  font-size: clamp(28px, 4vw, 40px);
+  margin: 14px 0 12px;
+  line-height: 1.15;
+}
+.section-sub{ color: var(--muted); font-size: 16.5px; max-width: 540px; }
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--secondary);
+  padding: 6px 12px 6px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: rgba(0,194,255,0.06);
+}
+.eyebrow-static{ background: rgba(20,241,149,0.06); color: var(--primary); border-color: rgba(20,241,149,0.2); }
+.eyebrow-center{ margin: 0 auto 6px; display:flex; width:fit-content; }
+.eyebrow .dot{
+  width:6px; height:6px; border-radius:50%; background: currentColor;
+  box-shadow: 0 0 8px currentColor;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-weight: 600; font-size: 14.5px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease), color .25s var(--ease);
+  white-space: nowrap;
+}
+.btn svg{ transition: transform 0.25s var(--ease); }
+.btn:hover svg{ transform: translateX(2px); }
+
+.btn-primary{
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #04150D;
+  box-shadow: 0 0 0 0 rgba(20,241,149,0.0);
+}
+.btn-primary:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -8px rgba(20,241,149,0.45);
+}
+
+.btn-outline{
+  border-color: var(--border-strong);
+  color: var(--text);
+  background: rgba(255,255,255,0.02);
+}
+.btn-outline:hover{
+  border-color: var(--secondary);
+  color: var(--secondary);
+  transform: translateY(-2px);
+}
+
+.btn-ghost{
+  color: var(--text);
+  background: transparent;
+}
+.btn-ghost:hover{ color: var(--secondary); }
+
+.btn-lg{ padding: 15px 28px; font-size: 15.5px; border-radius: 12px; }
+.btn-sm{ padding: 9px 16px; font-size: 13.5px; border-radius: 8px; }
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+.nav{
+  position: sticky; top:0; z-index:100;
+  background: rgba(11,18,32,0.7);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner{
+  max-width: 1240px; margin:0 auto; padding: 16px 28px;
+  display:flex; align-items:center; justify-content:space-between; gap: 24px;
+}
+.brand{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.brand-mark{ display:flex; }
+.brand-name{ font-family: var(--font-display); font-weight:700; font-size:17px; letter-spacing:-0.01em; }
+.brand-accent{ color: var(--primary); }
+
+.nav-links{ display:flex; align-items:center; gap: 30px; }
+.nav-links a{
+  font-size: 14.5px; color: var(--muted); font-weight:500;
+  position: relative; transition: color 0.2s;
+  padding: 4px 0;
+}
+.nav-links a::after{
+  content:''; position:absolute; left:0; bottom:-2px; width:0; height:1.5px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 0.25s var(--ease);
+}
+.nav-links a:hover{ color: var(--text); }
+.nav-links a:hover::after{ width:100%; }
+
+.nav-cta{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+
+.nav-burger{
+  display:none; flex-direction:column; gap:5px; background:none; border:none; padding:6px;
+}
+.nav-burger span{ width:22px; height:2px; background: var(--text); border-radius:2px; transition: 0.25s var(--ease); }
+.nav-burger[aria-expanded="true"] span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.nav-burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+.nav-burger[aria-expanded="true"] span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu{
+  display:none; flex-direction:column; gap:4px;
+  max-height:0; overflow:hidden;
+  border-top: 1px solid var(--border);
+  background: rgba(11,18,32,0.97);
+  transition: max-height 0.35s var(--ease);
+}
+.mobile-menu.open{ max-height: 420px; }
+.mobile-menu a{
+  padding: 14px 28px; color: var(--muted); font-weight:500; font-size:15px;
+  border-bottom: 1px solid var(--border);
+}
+.mobile-cta{ display:flex; gap:10px; padding: 16px 28px; }
+.mobile-cta .btn{ flex:1; }
+
+@media (max-width: 900px){
+  .nav-links, .nav-cta{ display:none; }
+  .nav-burger{ display:flex; }
+  .mobile-menu{ display:flex; }
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+.hero{
+  position: relative;
+  padding: 140px 0 0;
+  min-height: 92vh;
+  display:flex; flex-direction:column; justify-content:center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.structure-canvas{
+  position:absolute; inset:0; width:100%; height:100%;
+  opacity: 0.55;
+  z-index:0;
+}
+.hero-grid{
+  position:absolute; inset:0; z-index:0;
+  background-image:
+    linear-gradient(rgba(148,163,184,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148,163,184,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 0%, transparent 75%);
+}
+.hero-glow{
+  position:absolute; border-radius:50%; filter: blur(90px); z-index:0; pointer-events:none;
+}
+.hero-glow-a{
+  width:520px; height:520px; top:-160px; left:8%;
+  background: radial-gradient(circle, rgba(var(--primary-rgb),0.22), transparent 70%);
+}
+.hero-glow-b{
+  width:560px; height:560px; top:-100px; right:6%;
+  background: radial-gradient(circle, rgba(var(--secondary-rgb),0.18), transparent 70%);
+}
+
+.hero-inner{
+  position:relative; z-index:1;
+  max-width: 800px; margin: 0 auto; padding: 0 28px;
+  text-align:center;
+}
+.hero-title{
+  font-size: clamp(40px, 6.4vw, 72px);
+  line-height: 1.05;
+  margin: 22px 0 20px;
+  background: linear-gradient(180deg, #FFFFFF 30%, rgba(255,255,255,0.78));
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-sub{
+  color: var(--muted);
+  font-size: clamp(16px, 1.6vw, 18.5px);
+  max-width: 600px; margin: 0 auto 36px;
+}
+.hero-actions{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; }
+.hero-trust{
+  margin-top: 36px;
+  display:flex; align-items:center; justify-content:center; gap:14px;
+  color: var(--muted); font-size: 14px;
+  font-family: var(--font-mono);
+}
+.hero-trust strong{ color: var(--text); font-weight:600; }
+.hero-trust .sep{ opacity: 0.3; }
+
+@media (max-width: 600px){
+  .hero-trust{ gap:8px; font-size:12.5px; flex-wrap: wrap; }
+}
+
+/* ticker tape */
+.hero-tape{
+  position: relative; z-index:1;
+  margin-top: 64px;
+  border-top: 1px solid var(--border);
+  background: rgba(255,255,255,0.015);
+  overflow:hidden;
+  padding: 16px 0;
+}
+.tape-track{
+  display:flex; gap: 40px; white-space:nowrap;
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+  animation: tapeScroll 32s linear infinite;
+  width: max-content;
+}
+.tape-track i{ font-style: normal; margin-left:4px; }
+.tape-track i.up{ color: var(--primary); }
+.tape-track i.down{ color: #FF6B6B; }
+@keyframes tapeScroll{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+
+/* fade up entrance (hero only, runs on load) */
+.fade-up{
+  opacity:0; transform: translateY(18px);
+  animation: fadeUp 0.8s var(--ease) forwards;
+  animation-delay: var(--d, 0s);
+}
+@keyframes fadeUp{ to{ opacity:1; transform:none; } }
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+.reveal{
+  opacity:0; transform: translateY(24px);
+  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+}
+.reveal.is-visible{ opacity:1; transform:none; }
+
+/* =========================================================
+   GLASSMORPHISM CARD BASE
+========================================================= */
+.glass{
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.85), rgba(var(--card-rgb),0.55));
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+/* =========================================================
+   TICK DIVIDER (candlestick motif between sections)
+========================================================= */
+.tick-divider{
+  height: 1px;
+  max-width: 1240px; margin: 0 auto;
+  background: linear-gradient(90deg, transparent, var(--border-strong) 15%, var(--border-strong) 85%, transparent);
+  position: relative;
+}
+.tick-divider::before{
+  content:''; position:absolute; left:50%; top:50%; transform: translate(-50%,-50%);
+  width: 5px; height: 5px; border-radius:50%;
+  background: var(--primary);
+  box-shadow: 0 0 12px rgba(var(--primary-rgb),0.7);
+}
+
+/* =========================================================
+   TRADING LIBRARY
+========================================================= */
+.library-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+}
+.lib-card--lg{ grid-column: span 2; grid-row: span 2; }
+.lib-card{
+  grid-column: span 2;
+  border-radius: var(--radius-lg);
+  overflow:hidden;
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.9), rgba(var(--card-rgb),0.6));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  display:flex; flex-direction:column;
+  transition: transform 0.35s var(--ease), border-color 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  position: relative;
+}
+.lib-card:hover{
+  transform: translateY(-6px);
+  border-color: rgba(var(--primary-rgb),0.4);
+  box-shadow: 0 30px 60px -30px rgba(0,0,0,0.7), 0 0 0 1px rgba(var(--primary-rgb),0.15), 0 0 40px -10px rgba(var(--primary-rgb),0.25);
+}
+
+.lib-cover{
+  position:relative;
+  height: 168px;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(var(--primary-rgb),0.18), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(var(--secondary-rgb),0.16), transparent 55%),
+    linear-gradient(160deg, #0E1626, #0A0F1B);
+  display:flex; align-items:flex-start; justify-content:flex-end; padding: 16px;
+  overflow:hidden;
+}
+.lib-card--lg .lib-cover{ height: 100%; min-height: 260px; position:absolute; inset:0; padding:20px; z-index:0; }
+.lib-card--lg{ min-height: 380px; justify-content:flex-end; }
+.lib-card--lg .lib-body{ position:relative; z-index:1; background: linear-gradient(180deg, transparent, rgba(7,11,20,0.92) 40%); margin-top:auto; }
+
+.lib-cover::after{
+  content:''; position:absolute; inset:0;
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0 22px, rgba(148,163,184,0.07) 22px 23px);
+  opacity:0.5;
+}
+.lib-cover[data-cover]::before{
+  content:''; position:absolute; left:-5%; right:-5%; bottom:18%; height:46%;
+  background: linear-gradient(100deg, transparent 0%, rgba(var(--primary-rgb),0.45) 50%, transparent 100%);
+  clip-path: polygon(0% 70%, 10% 55%, 20% 60%, 32% 30%, 44% 45%, 56% 15%, 68% 35%, 80% 20%, 100% 40%, 100% 100%, 0% 100%);
+  opacity: 0.6;
+}
+
+.lib-tag{
+  font-family: var(--font-mono); font-size: 11px; letter-spacing:0.04em; text-transform:uppercase;
+  color: var(--secondary);
+  background: rgba(0,194,255,0.12);
+  border: 1px solid rgba(0,194,255,0.3);
+  padding: 5px 10px; border-radius:999px;
+  position: relative; z-index:1;
+}
+
+.lib-body{ padding: 22px 22px 24px; display:flex; flex-direction:column; gap:10px; flex:1; }
+.lib-body h3{ font-size: 19px; }
+.lib-card--lg .lib-body h3{ font-size: 24px; }
+.lib-body p{ color: var(--muted); font-size: 14.5px; line-height:1.55; flex:1; }
+.lib-actions{ display:flex; align-items:center; justify-content:space-between; margin-top: 6px; flex-wrap: wrap; gap: 10px; }
+
+.lib-link{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size: 13.5px; font-weight:600; color: var(--text);
+  transition: color 0.2s, gap 0.2s;
+}
+.lib-link:hover{ color: var(--primary); }
+.lib-link svg{ transition: transform 0.2s var(--ease); }
+.lib-link:hover svg{ transform: translateX(3px); }
+.lib-link--pdf{
+  color: var(--muted); font-size:13px;
+  border: 1px solid var(--border-strong); border-radius:8px; padding:6px 12px;
+}
+.lib-link--pdf:hover{ color: var(--secondary); border-color: var(--secondary); }
+
+@media (max-width: 1024px){
+  .library-grid{ grid-template-columns: repeat(2, 1fr); }
+  .lib-card, .lib-card--lg{ grid-column: span 1; }
+  .lib-card--lg{ min-height: 320px; }
+}
+@media (max-width: 600px){
+  .library-grid{ grid-template-columns: 1fr; }
+}
+
+/* =========================================================
+   TOOLS GRID
+========================================================= */
+.tools-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.tool-card{
+  display:block;
+  padding: 28px 26px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.85), rgba(var(--card-rgb),0.55));
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.tool-card::before{
+  content:''; position:absolute; inset:-1px; border-radius: inherit; padding:1px;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb),0.7), rgba(var(--secondary-rgb),0.7));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity:0; transition: opacity 0.35s var(--ease);
+  pointer-events:none;
+}
+.tool-card:hover{ transform: translateY(-5px); }
+.tool-card:hover::before{ opacity:1; }
+.tool-card:hover{
+  box-shadow: 0 26px 50px -28px rgba(0,0,0,0.7), 0 0 36px -8px rgba(var(--primary-rgb),0.22);
+}
+
+.tool-icon{
+  width: 46px; height:46px; border-radius: 12px;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb),0.16), rgba(var(--secondary-rgb),0.12));
+  color: var(--primary);
+  margin-bottom: 18px;
+  transition: transform 0.3s var(--ease), color 0.3s;
+}
+.tool-card:hover .tool-icon{ transform: scale(1.08) rotate(-4deg); color: var(--secondary); }
+
+.tool-card h3{ font-size: 18px; margin-bottom: 8px; }
+.tool-card p{ color: var(--muted); font-size: 14.5px; margin-bottom: 18px; }
+.tool-go{
+  font-size: 13.5px; font-weight:600; color: var(--text); opacity:0.8;
+  transition: color 0.2s, opacity 0.2s;
+}
+.tool-card:hover .tool-go{ color: var(--primary); opacity:1; }
+
+@media (max-width: 900px){ .tools-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px){ .tools-grid{ grid-template-columns: 1fr; } }
+
+/* =========================================================
+   PROP FIRM DEALS
+========================================================= */
+.deals-grid{
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.deal-card{
+  padding: 26px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.9), rgba(var(--card-rgb),0.6));
+  border: 1px solid var(--border);
+  display:flex; flex-direction:column; gap:14px;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.deal-card:hover{
+  transform: translateY(-5px);
+  border-color: rgba(var(--secondary-rgb),0.4);
+  box-shadow: 0 26px 50px -28px rgba(0,0,0,0.7), 0 0 36px -10px rgba(var(--secondary-rgb),0.22);
+}
+.deal-top{ display:flex; align-items:center; justify-content:space-between; }
+.deal-logo{
+  width:44px; height:44px; border-radius:10px;
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-mono); font-weight:700; font-size:13px;
+  background: linear-gradient(135deg, rgba(var(--secondary-rgb),0.18), rgba(var(--primary-rgb),0.12));
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+}
+.deal-badge{
+  font-family: var(--font-mono); font-size: 12px; font-weight:600;
+  color: #04150D;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  padding: 5px 10px; border-radius:999px;
+}
+.deal-card h3{ font-size: 18px; }
+.deal-desc{ color: var(--muted); font-size: 14px; line-height:1.5; flex:1; }
+.deal-code{
+  display:flex; align-items:center; justify-content:space-between;
+  border: 1px dashed var(--border-strong); border-radius: 8px;
+  padding: 9px 12px;
+  background: rgba(255,255,255,0.02);
+}
+.code-label{ font-size:12px; color: var(--muted); text-transform:uppercase; letter-spacing:0.05em; }
+.code-value{ font-family: var(--font-mono); font-size: 13.5px; font-weight:600; color: var(--primary); letter-spacing: 0.02em; }
+.deal-actions{ display:flex; gap:10px; }
+.deal-actions .btn{ flex:1; }
+
+@media (max-width: 1024px){ .deals-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px){ .deals-grid{ grid-template-columns: 1fr; } }
+
+/* =========================================================
+   BLOG / GUIDES
+========================================================= */
+.blog-grid{
+  display:grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+}
+.blog-card{
+  border-radius: var(--radius-md);
+  overflow:hidden;
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.88), rgba(var(--card-rgb),0.55));
+  border: 1px solid var(--border);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.blog-card:hover{ transform: translateY(-5px); border-color: var(--border-strong); }
+.blog-thumb{
+  height: 110px;
+  background: linear-gradient(150deg, #101A2E, #0B1220);
+  position:relative; overflow:hidden;
+}
+.blog-thumb::after{
+  content:''; position:absolute; inset:0;
+  background: linear-gradient(120deg, transparent 40%, rgba(var(--primary-rgb),0.16) 50%, transparent 60%);
+}
+.blog-thumb[data-thumb="bos"]::before, .blog-thumb[data-thumb="mss"]::before,
+.blog-thumb[data-thumb="cisd"]::before, .blog-thumb[data-thumb="liquidity"]::before,
+.blog-thumb[data-thumb="dol"]::before{
+  content:''; position:absolute; left:10%; right:10%; top:30%; height:2px;
+  background: rgba(var(--secondary-rgb),0.5);
+}
+.blog-body{ padding: 16px 18px 20px; }
+.blog-meta{
+  display:flex; align-items:center; gap:8px;
+  font-size: 12px; color: var(--muted); margin-bottom:10px;
+  font-family: var(--font-mono);
+}
+.blog-cat{ color: var(--secondary); }
+.blog-dot{ opacity:0.4; }
+.blog-card h3{ font-size: 16px; margin-bottom: 12px; }
+.blog-readmore{ font-size: 13px; font-weight:600; color: var(--primary); }
+.blog-readmore:hover{ color: var(--secondary); }
+
+@media (max-width: 1100px){ .blog-grid{ grid-template-columns: repeat(3,1fr); } }
+@media (max-width: 700px){ .blog-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px){ .blog-grid{ grid-template-columns: 1fr; } }
+
+/* =========================================================
+   STATS
+========================================================= */
+.stats{
+  padding: 80px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+}
+.stats-inner{
+  display:grid; grid-template-columns: repeat(4,1fr);
+  gap: 24px; text-align:center;
+}
+.stat{ display:flex; flex-direction:column; gap:8px; }
+.stat-num{
+  font-family: var(--font-mono); font-weight:600;
+  font-size: clamp(32px, 4vw, 48px);
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+}
+.stat-label{ color: var(--muted); font-size: 14px; letter-spacing:0.02em; }
+
+@media (max-width: 700px){ .stats-inner{ grid-template-columns: repeat(2,1fr); gap: 36px 20px; } }
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+.newsletter{ padding: 120px 0; position:relative; overflow:hidden; }
+.newsletter-inner{
+  max-width: 620px; text-align:center;
+  display:flex; flex-direction:column; align-items:center;
+  position: relative; z-index:1;
+}
+.newsletter-glow{
+  position:absolute; top:-120px; left:50%; transform:translateX(-50%);
+  width:700px; height:340px; border-radius:50%;
+  background: radial-gradient(circle, rgba(var(--primary-rgb),0.16), transparent 70%);
+  z-index:0; pointer-events:none;
+}
+.newsletter-title{ font-size: clamp(26px,3.6vw,38px); margin: 14px 0 12px; }
+.newsletter-sub{ color: var(--muted); margin-bottom: 30px; max-width: 460px; }
+.newsletter-form{
+  display:flex; gap:10px; width:100%; max-width: 460px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid var(--border-strong);
+  border-radius: 14px; padding: 6px;
+}
+.newsletter-form input{
+  flex:1; min-width:0; background:transparent; border:none; outline:none;
+  color: var(--text); font-size: 15px; padding: 12px 14px;
+  font-family: var(--font-body);
+}
+.newsletter-form input::placeholder{ color: var(--muted); }
+.newsletter-form .btn{ flex-shrink:0; }
+.newsletter-note{ margin-top:16px; font-size: 13px; color: var(--muted); }
+
+@media (max-width: 520px){
+  .newsletter-form{ flex-direction:column; padding: 10px; gap:8px; }
+  .newsletter-form .btn{ width:100%; }
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+.footer{ border-top: 1px solid var(--border); padding: 64px 0 28px; }
+.footer-top{
+  display:grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px; padding-bottom: 48px; border-bottom: 1px solid var(--border);
+}
+.footer-brand p{ color: var(--muted); font-size: 14px; margin-top: 14px; max-width: 280px; line-height:1.6; }
+.footer-links h4{ font-size: 13px; color: var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom: 16px; }
+.footer-links{ display:flex; flex-direction:column; gap:11px; }
+.footer-links a{ color: var(--muted); font-size: 14.5px; transition: color 0.2s; }
+.footer-links a:hover{ color: var(--primary); }
+
+.footer-bottom{
+  display:flex; align-items:center; justify-content:space-between;
+  padding-top: 24px; color: var(--muted); font-size: 13.5px; flex-wrap:wrap; gap:10px;
+}
+.footer-built span{ color: var(--primary); font-weight:600; }
+
+@media (max-width: 800px){
+  .footer-top{ grid-template-columns: 1fr 1fr; gap: 32px 24px; }
+  .footer-brand{ grid-column: span 2; }
+}
+@media (max-width: 480px){
+  .footer-top{ grid-template-columns: 1fr; }
+  .footer-brand{ grid-column: span 1; }
+  .footer-bottom{ flex-direction:column; align-items:flex-start; }
+}
+
+  
+
+/* =========================================================
+   ARTICLE PAGE EXTENSIONS
+   (extends existing tokens — same vars, same card language)
+========================================================= */
+
+/* breadcrumb */
+.breadcrumb{
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+  font-family: var(--font-mono); font-size: 12.5px; color: var(--muted);
+  margin-bottom: 18px;
+}
+.breadcrumb a{ color: var(--muted); transition: color 0.2s; }
+.breadcrumb a:hover{ color: var(--primary); }
+.breadcrumb span.sep{ opacity:0.4; }
+.breadcrumb .current{ color: var(--text); }
+
+/* article hero (lighter version of homepage hero) */
+.article-hero{
+  position: relative;
+  padding: 64px 0 56px;
+  overflow:hidden;
+  border-bottom: 1px solid var(--border);
+}
+.article-hero .hero-grid{ opacity:0.7; }
+.article-hero-inner{
+  position:relative; z-index:1;
+  max-width: 800px;
+}
+.article-kicker{
+  display:flex; align-items:center; gap:10px; margin-bottom:18px; flex-wrap:wrap;
+}
+.article-title{
+  font-size: clamp(30px, 4.6vw, 46px);
+  line-height: 1.12;
+  margin-bottom: 16px;
+}
+.article-dek{
+  color: var(--muted);
+  font-size: clamp(15.5px, 1.4vw, 17.5px);
+  max-width: 640px;
+  margin-bottom: 22px;
+}
+.article-meta{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  font-family: var(--font-mono); font-size: 13px; color: var(--muted);
+}
+.article-meta .sep{ opacity:0.35; }
+.article-meta strong{ color: var(--text); font-weight:600; }
+
+/* layout: article + sticky side rail */
+.article-layout{
+  display:grid;
+  grid-template-columns: minmax(0,1fr) 280px;
+  gap: 56px;
+  align-items: start;
+  padding: 64px 0;
+}
+@media (max-width: 980px){
+  .article-layout{ grid-template-columns: 1fr; gap: 32px; padding: 48px 0; }
+  .article-rail{ order: -1; }
+}
+
+/* the article body itself — typography pass only, same color tokens */
+.article-body{ max-width: 720px; }
+.article-body > *:first-child{ margin-top:0; }
+
+.article-body h2{
+  font-size: clamp(22px, 2.6vw, 28px);
+  margin: 52px 0 18px;
+  line-height: 1.25;
+  scroll-margin-top: 100px;
+}
+.article-body h2:first-of-type{ margin-top:0; }
+.article-body h3{
+  font-size: 19px;
+  margin: 32px 0 12px;
+  color: var(--text);
+  scroll-margin-top: 100px;
+}
+.article-body p{
+  color: rgba(255,255,255,0.86);
+  font-size: 16px;
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+.article-body strong{ color: var(--text); font-weight:600; }
+.article-body em{ color: var(--secondary); font-style: normal; }
+.article-body ul, .article-body ol{
+  margin: 0 0 22px; padding-left: 22px;
+  color: rgba(255,255,255,0.86); font-size: 16px; line-height:1.75;
+}
+.article-body li{ margin-bottom: 8px; }
+.article-body ul{ list-style: none; padding-left: 0; }
+.article-body ul > li{
+  position:relative; padding-left: 26px;
+}
+.article-body ul > li::before{
+  content:''; position:absolute; left:0; top:9px;
+  width:7px; height:7px; border-radius:2px;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  transform: rotate(45deg);
+}
+.article-body blockquote{
+  margin: 28px 0; padding: 18px 22px;
+  border-left: 2px solid var(--primary);
+  background: rgba(20,241,149,0.05);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  color: var(--text); font-size: 15.5px; line-height:1.7;
+}
+.article-body code{
+  font-family: var(--font-mono); font-size: 0.88em;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--border-strong);
+  padding: 2px 7px; border-radius: 6px;
+  color: var(--secondary);
+}
+
+/* example / scenario callout card — reuses glass card language */
+.example-card{
+  margin: 26px 0;
+  padding: 22px 24px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.9), rgba(var(--card-rgb),0.6));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+}
+.example-card .example-label{
+  display:inline-flex; align-items:center; gap:7px;
+  font-family: var(--font-mono); font-size: 11.5px; text-transform:uppercase; letter-spacing:0.05em;
+  color: var(--primary);
+  background: rgba(20,241,149,0.1);
+  border: 1px solid rgba(20,241,149,0.25);
+  padding: 5px 10px; border-radius: 999px;
+  margin-bottom: 14px;
+}
+.example-card p:last-child{ margin-bottom:0; }
+
+/* mistakes section */
+.mistake-list{ display:flex; flex-direction:column; gap:14px; margin: 22px 0 18px; }
+.mistake-item{
+  display:flex; gap:14px;
+  padding: 16px 18px;
+  border-radius: var(--radius-sm);
+  background: rgba(255,107,107,0.05);
+  border: 1px solid rgba(255,107,107,0.18);
+}
+.mistake-item .mi-icon{
+  flex-shrink:0; width:26px; height:26px; border-radius:50%;
+  background: rgba(255,107,107,0.14); color:#FF6B6B;
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-mono); font-weight:700; font-size:13px;
+}
+.mistake-item p{ margin:0; color: rgba(255,255,255,0.85); font-size:15px; line-height:1.6; }
+.mistake-item strong{ display:block; color:var(--text); margin-bottom:3px; font-size:15.5px; }
+
+/* key takeaways */
+.takeaway-box{
+  margin: 30px 0;
+  padding: 26px 26px 22px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(var(--primary-rgb),0.08), rgba(var(--secondary-rgb),0.05));
+  border: 1px solid rgba(var(--primary-rgb),0.25);
+}
+.takeaway-box h2{ margin-top:0 !important; font-size:21px !important; display:flex; align-items:center; gap:10px; }
+.takeaway-list{ display:flex; flex-direction:column; gap:11px; margin-top:14px; }
+.takeaway-item{ display:flex; gap:11px; align-items:flex-start; }
+.takeaway-item svg{ flex-shrink:0; margin-top:3px; color: var(--primary); }
+.takeaway-item p{ margin:0; font-size:15px; color: rgba(255,255,255,0.88); line-height:1.6; }
+
+/* FAQ accordion */
+.faq-list{ display:flex; flex-direction:column; gap:10px; margin-top: 20px; }
+.faq-item{
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.02);
+  overflow:hidden;
+}
+.faq-question{
+  width:100%; display:flex; align-items:center; justify-content:space-between; gap:14px;
+  padding: 16px 18px; background:none; border:none; text-align:left;
+  color: var(--text); font-size: 15.5px; font-weight:600; font-family: var(--font-body);
+}
+.faq-question svg{ flex-shrink:0; transition: transform 0.3s var(--ease); color: var(--muted); }
+.faq-item.open .faq-question svg{ transform: rotate(180deg); color: var(--primary); }
+.faq-answer{
+  max-height:0; overflow:hidden; transition: max-height 0.35s var(--ease);
+}
+.faq-answer-inner{ padding: 0 18px 18px; color: var(--muted); font-size:14.5px; line-height:1.7; }
+
+/* sticky rail (table of contents) */
+.article-rail{ display:flex; flex-direction:column; gap:18px; }
+@media (min-width: 981px){
+  .article-rail{ position: sticky; top: 96px; }
+}
+.rail-card{
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.85), rgba(var(--card-rgb),0.55));
+  border: 1px solid var(--border);
+}
+.rail-card h4{
+  font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing:0.06em;
+  color: var(--secondary); margin-bottom: 14px;
+}
+.toc-list{ display:flex; flex-direction:column; gap:9px; }
+.toc-list a{
+  font-size: 13.5px; color: var(--muted); transition: color 0.2s, padding-left 0.2s;
+  padding-left: 0; border-left: 2px solid transparent; padding-left:10px; line-height:1.4;
+}
+.toc-list a:hover{ color: var(--text); }
+.toc-list a.active{ color: var(--primary); border-left-color: var(--primary); }
+
+.rail-cta p{ font-size:13.5px; color: var(--muted); margin-bottom:14px; line-height:1.55; }
+.rail-cta .btn{ width:100%; }
+
+/* prev / next / library nav */
+.article-pager{
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap: 16px; margin-top: 20px;
+}
+.pager-link{
+  display:flex; flex-direction:column; gap:6px;
+  padding: 18px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.85), rgba(var(--card-rgb),0.55));
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.pager-link:hover{ transform: translateY(-3px); border-color: var(--border-strong); }
+.pager-link.next{ text-align:right; align-items:flex-end; }
+.pager-label{
+  font-family: var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.05em; color: var(--muted);
+  display:flex; align-items:center; gap:6px;
+}
+.pager-title{ font-weight:600; font-size:15.5px; color: var(--text); }
+.pager-link:hover .pager-title{ color: var(--primary); }
+.pager-link.next .pager-label{ flex-direction:row-reverse; }
+
+.back-library{
+  display:flex; justify-content:center; margin: 28px 0 0;
+}
+
+@media (max-width: 600px){
+  .article-pager{ grid-template-columns: 1fr; }
+  .pager-link.next{ text-align:left; align-items:flex-start; }
+  .pager-link.next .pager-label{ flex-direction:row; }
+}
+
+/* PDF download / countdown section */
+.pdf-section{
+  margin-top: 56px;
+  padding: 36px 32px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.92), rgba(var(--card-rgb),0.65));
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-card);
+  text-align:center;
+  position: relative;
+  overflow:hidden;
+}
+.pdf-section::before{
+  content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%);
+  width:380px; height:200px; border-radius:50%;
+  background: radial-gradient(circle, rgba(var(--primary-rgb),0.16), transparent 70%);
+  pointer-events:none;
+}
+.pdf-icon{
+  width:52px; height:52px; border-radius:14px; margin: 0 auto 16px;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb),0.16), rgba(var(--secondary-rgb),0.12));
+  color: var(--primary);
+}
+.pdf-section h2{ margin: 0 0 8px !important; font-size: 22px !important; position:relative; z-index:1; }
+.pdf-section p{ color: var(--muted); font-size:14.5px; max-width:420px; margin: 0 auto 22px; position:relative; z-index:1; }
+
+.pdf-timer-wrap{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.pdf-countdown{
+  display:flex; align-items:center; gap:10px;
+  font-family: var(--font-mono);
+  color: var(--muted); font-size: 14px;
+}
+.pdf-countdown-num{
+  font-size: 26px; font-weight:600; color: var(--text);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  min-width: 58px; padding: 8px 4px;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.pdf-progress{
+  width: 220px; height:4px; border-radius:999px; background: rgba(255,255,255,0.08); overflow:hidden;
+}
+.pdf-progress-bar{
+  height:100%; width:0%; border-radius:999px;
+  background: linear-gradient(90deg, var(--secondary), var(--primary));
+  transition: width 1s linear;
+}
+.pdf-download-btn{
+  display:none;
+  align-items:center; gap:9px;
+}
+.pdf-download-btn.ready{
+  display:inline-flex;
+  animation: fadeUp 0.5s var(--ease) forwards;
+}
+
+/* misc */
+.text-center{ text-align:center; }
+.mt-0{ margin-top:0 !important; }
+
+
+/* =========================================================
+   RELATED TOPICS + DIAGRAM PLACEHOLDER EXTENSIONS
+   (additive only — same tokens, same card language)
+========================================================= */
+
+.related-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 18px;
+}
+.related-card{
+  display:flex; flex-direction:column; gap:8px;
+  padding: 18px 18px 16px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.85), rgba(var(--card-rgb),0.55));
+  border: 1px solid var(--border);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.related-card:hover{ transform: translateY(-4px); border-color: rgba(var(--primary-rgb),0.35); }
+.related-tag{
+  font-family: var(--font-mono); font-size: 10.5px; text-transform:uppercase; letter-spacing:0.05em;
+  color: var(--secondary);
+}
+.related-card h4{ font-size: 15.5px; color: var(--text); }
+.related-card:hover h4{ color: var(--primary); }
+.related-card p{ font-size: 13px; color: var(--muted); line-height:1.5; margin:0; }
+
+@media (max-width: 900px){ .related-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px){ .related-grid{ grid-template-columns: 1fr; } }
+
+/* diagram / image placeholder block — sits inside article body */
+.diagram-placeholder{
+  margin: 26px 0;
+  border-radius: var(--radius-md);
+  border: 1px dashed var(--border-strong);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(var(--primary-rgb),0.07), transparent 55%),
+    radial-gradient(circle at 80% 80%, rgba(var(--secondary-rgb),0.06), transparent 55%),
+    rgba(255,255,255,0.015);
+  min-height: 220px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+  text-align:center;
+  padding: 28px 20px;
+}
+.diagram-placeholder .dp-icon{
+  width:46px; height:46px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  background: linear-gradient(135deg, rgba(var(--primary-rgb),0.14), rgba(var(--secondary-rgb),0.1));
+  color: var(--primary);
+}
+.diagram-placeholder .dp-label{
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.diagram-placeholder .dp-caption{ font-size: 13.5px; color: var(--muted); max-width: 380px; }
+
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../" class="brand" aria-label="Sadik Finance home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <path d="M2 18L8 11L13 15L24 3" stroke="url(#g1)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17 3H24V10" stroke="url(#g1)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs><linearGradient id="g1" x1="2" y1="18" x2="24" y2="3"><stop stop-color="#14F195"/><stop offset="1" stop-color="#00C2FF"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span class="brand-name">Sadik<span class="brand-accent">Finance</span></span>
+    </a>
+
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../#library">Library</a>
+      <a href="../#tools">Tools</a>
+      <a href="../#deals">Prop Deals</a>
+      <a href="../#guides">Guides</a>
+      <a href="../#newsletter">Community</a>
+    </nav>
+
+    <div class="nav-cta">
+      <a href="../#tools" class="btn btn-ghost">Open Tools</a>
+      <a href="../#library" class="btn btn-primary">Explore Library</a>
+    </div>
+
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../#library">Library</a>
+    <a href="../#tools">Tools</a>
+    <a href="../#deals">Prop Deals</a>
+    <a href="../#guides">Guides</a>
+    <a href="../#newsletter">Community</a>
+    <div class="mobile-cta">
+      <a href="../#tools" class="btn btn-ghost">Open Tools</a>
+      <a href="../#library" class="btn btn-primary">Explore Library</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="article-hero" aria-label="Article introduction">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="section-inner article-hero-inner">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../">Home</a>
+        <span class="sep">/</span>
+        <a href="../#library">Trading Library</a>
+        <span class="sep">/</span>
+        <span class="current">Funded Account Guide</span>
+      </nav>
+
+      <div class="article-kicker">
+        <p class="eyebrow eyebrow-static"><span class="dot"></span> Foundations · Prop Firm Funding</p>
+      </div>
+
+      <h1 class="article-title">Funded Account Guide: How Challenges, Drawdown Rules, and Payouts Actually Work</h1>
+      <p class="article-dek">A funded account lets you trade a prop firm's capital instead of your own, in exchange for following a specific rule set. This guide walks through how evaluations actually work, the rules that decide pass or fail, and how payouts and scaling plans function once you're funded.</p>
+
+      <div class="article-meta">
+        <span><strong>14 min</strong> read</span>
+        <span class="sep">/</span>
+        <span>Updated June 2026</span>
+        <span class="sep">/</span>
+        <span>By Sadik Finance Research</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="section-inner">
+      <div class="article-layout">
+
+        <article class="article-body">
+
+          <h2 id="what-is-a-funded-account">What Is a Funded Account?</h2>
+          <p>A funded account is a trading account where the capital belongs to a proprietary trading firm rather than the trader. In exchange for access to that capital — often ranging from $10,000 to $200,000 or more — the trader agrees to follow the firm's specific risk rules and typically keeps a majority share of the profits generated, commonly somewhere between 70% and 90%, depending on the firm and plan.</p>
+          <p>The appeal is straightforward: a trader with a genuine edge but limited personal capital can trade a much larger account size than they could otherwise afford, while the firm's exposure is limited by the strict drawdown rules covered later in this guide. It's a structure that works because both sides have aligned incentives — the firm profits from a share of genuinely skilled traders' results, and the trader gains access to capital they couldn't otherwise risk.</p>
+          <div class="diagram-placeholder">
+            <div class="dp-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 13L9 8L13 11L21 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="20" r="1" fill="currentColor"/><circle cx="12" cy="20" r="1" fill="currentColor"/><circle cx="17" cy="20" r="1" fill="currentColor"/></svg></div>
+            <span class="dp-label">Funded Account Chart Placeholder</span>
+            <p class="dp-caption">Funded account chart — a sample evaluation equity curve showing the profit target line and maximum drawdown floor a trader must stay between.</p>
+          </div>
+
+          <h2 id="how-prop-firms-work">How Prop Firms Work</h2>
+          <p>Most retail-facing prop firms operate on a simulated funding model rather than directly handing traders live institutional capital from day one. A trader pays a one-time fee to attempt an evaluation, trades a demo or simulated account against a specific rule set, and if they pass, the firm grants access to a funded account that mirrors real market conditions, with real payouts paid out from the firm's own capital based on the trader's simulated performance.</p>
+          <p>This model lets firms onboard a large pool of traders cheaply, filter for the ones who can demonstrate consistent, rule-following performance during the evaluation, and only commit firm capital — or real profit-sharing payouts — to the traders who actually clear that bar. It's worth understanding this structure because it explains why the evaluation rules are designed the way they are: every rule exists specifically to filter out behavior the firm doesn't want to fund.</p>
+
+          <h2 id="evaluation-challenges">Evaluation Challenges Explained</h2>
+          <p>An evaluation challenge is the test a trader completes before being granted a funded account. Challenges vary by firm but generally follow one of two structures:</p>
+          <ul>
+            <li><strong>Two-step challenges.</strong> A first phase with a profit target (often 8–10%) and a second, slightly easier phase with a lower target (often 4–5%), both under the same drawdown rules. This remains the more traditional model.</li>
+            <li><strong>One-step challenges.</strong> A single phase combining a profit target with the full set of drawdown and consistency rules, completed in one pass rather than two. These have become increasingly common as firms compete on speed-to-funding.</li>
+          </ul>
+          <p>Regardless of structure, the underlying goal is the same: demonstrate that profit can be generated while staying inside a defined risk envelope, consistently enough that the performance looks like skill rather than a single lucky run.</p>
+
+          <h2 id="profit-targets">Profit Targets</h2>
+          <p>A profit target is the percentage gain a trader must reach during an evaluation phase to pass. Common figures are 8–10% for a challenge's first phase and 4–5% for a second phase on two-step models, or a single 8–10% target on one-step models. These targets are deliberately calibrated to be reachable by a trader with a genuine edge and sound risk management, while remaining difficult enough to filter out undisciplined or purely lucky attempts.</p>
+          <p>It's worth resisting the temptation to treat the profit target as something to rush toward as quickly as possible. A trader chasing an 8% target in the first few days, taking oversized risk to get there faster, is far more likely to breach a drawdown rule before reaching the target than a trader who paces the same target across several weeks using consistent, modest position sizing.</p>
+
+          <h2 id="max-drawdown">Maximum Drawdown Rules</h2>
+          <p>Maximum drawdown is the total amount an account is allowed to lose from either its starting balance or its highest point reached (called a "trailing" drawdown) before the evaluation — or the funded account itself — is automatically failed. Common figures range from 8% to 12% of the initial account size, though the exact rule and calculation method vary meaningfully by firm.</p>
+          <p>The distinction between a static drawdown (measured only from the starting balance) and a trailing drawdown (measured from the account's peak equity) matters significantly. On a trailing drawdown rule, growing an account to +5% and then losing 10% from that peak can breach the limit even though the account is still technically profitable overall relative to the starting balance — a detail that catches many traders who assume drawdown only applies below the original deposit.</p>
+
+          <h2 id="daily-drawdown">Daily Drawdown Rules</h2>
+          <p>Daily drawdown caps the loss allowed within a single trading day, separate from the overall maximum drawdown limit. Common figures sit around 4–5% of account size. Some firms calculate this from the previous day's closing balance, while others track it intraday in real time — meaning even a temporary dip during the day, not just the day's final result, can breach the rule on some firms' systems.</p>
+          <div class="example-card">
+            <span class="example-label">Real Example</span>
+            <p>On a $50,000 account with a 5% daily drawdown limit ($2,500), a trader who is down $1,800 mid-session and then recovers to close the day down only $400 might still have breached the rule on a firm that tracks intraday drawdown in real time, even though the day's final result looks mild. Understanding exactly how a specific firm calculates this rule — end-of-day balance versus real-time tracking — is essential before risking a full day's worth of trades against it.</p>
+          </div>
+
+          <h2 id="consistency-rules">Consistency Rules</h2>
+          <p>Consistency rules cap how much of an account's total profit can come from a single trading day, specifically to prevent one large, high-risk trade from carrying an entire evaluation or payout. A common structure limits any single day's profit to 20–30% of the total profit accumulated across the challenge, meaning a trader needs genuinely consistent performance across multiple days rather than one outsized win.</p>
+          <p>This rule directly targets a specific kind of evaluation gaming: taking a single oversized, high-risk trade hoping to hit the entire profit target in one shot. Firms that enforce consistency rules will fail or flag an account that technically reached its profit target this way, even if the maximum drawdown limit was never breached, because the result doesn't reflect the kind of repeatable behavior the firm is actually trying to fund.</p>
+
+          <h2 id="why-traders-fail-challenges">Common Reasons Traders Fail Challenges</h2>
+          <p>The vast majority of failed evaluations trace back to a small set of recurring causes, most of which connect directly to concepts covered elsewhere in this library:</p>
+          <ul>
+            <li><strong>Oversized risk per trade</strong> in an attempt to reach the profit target quickly, breaching maximum or daily drawdown after just a few losing trades.</li>
+            <li><strong>Revenge trading after an early loss</strong>, covered in detail in our <a href="../trading-psychology/">Trading Psychology guide</a>, compounding risk at exactly the wrong moment.</li>
+            <li><strong>Ignoring the specific drawdown calculation method</strong> a firm uses — assuming a static drawdown rule when the firm actually uses a trailing one, for example.</li>
+            <li><strong>Violating consistency rules</strong> by reaching the profit target through one or two outsized trades rather than steady, repeatable performance.</li>
+            <li><strong>Trading news events or holding through high-impact releases</strong> without checking whether the firm restricts this, since some firms prohibit or penalize trading around major scheduled news.</li>
+          </ul>
+
+          <h2 id="risk-management-funded">Risk Management for Funded Accounts</h2>
+          <p>The most reliable approach to a funded evaluation is applying the same disciplined risk management covered in our dedicated <a href="../risk-management/">Risk Management guide</a> — generally keeping per-trade risk around 0.5–1% of account size — rather than taking larger risks simply because the capital isn't personally owned. This isn't just a moral stance; it's the mathematically sound approach, since the firm's drawdown rules are specifically designed to fail accounts taking outsized risk, whether those accounts are winning or losing in the moment.</p>
+          <p>A useful mental reframe: treat the account size on a funded challenge exactly as you would treat the equivalent amount of personal capital, applying the same 1% rule, the same daily loss limits, and the same stop-loss discipline. Traders who maintain this consistency between personal and funded account behavior tend to have a meaningfully higher pass rate than those who deliberately take larger risks specifically because the money isn't their own.</p>
+
+          <h2 id="passing-step-by-step">Passing a Challenge Step-by-Step</h2>
+          <p>A practical, methodical approach to a challenge generally follows this sequence:</p>
+          <ol>
+            <li><strong>Read the specific firm's full rule set before trading a single position.</strong> Confirm the exact profit target, maximum drawdown type (static or trailing), daily drawdown calculation method, and any consistency or news-trading restrictions.</li>
+            <li><strong>Set a fixed per-trade risk percentage</strong>, typically 0.5–1%, and calculate position size for every trade using that fixed percentage rather than estimating.</li>
+            <li><strong>Set a personal daily loss limit slightly tighter than the firm's rule</strong>, giving a buffer against the firm's hard limit rather than trading right up to the edge of it.</li>
+            <li><strong>Pace the profit target across multiple weeks rather than rushing it</strong>, taking only setups that meet the same quality criteria used in personal trading.</li>
+            <li><strong>Track every trade in a journal</strong>, including the emotional state behind each entry, watching specifically for the revenge-trading and overtrading patterns covered in our Trading Psychology guide.</li>
+            <li><strong>Reduce size, not increase it, as the profit target gets closer</strong>, since protecting progress already made matters more at that stage than reaching the target a few days sooner.</li>
+          </ol>
+
+          <h2 id="payouts-and-scaling">Payouts and Scaling Plans</h2>
+          <p>Once funded, a trader typically becomes eligible for payouts on a recurring schedule — commonly every two weeks or monthly, depending on the firm — withdrawing their share of the profits generated, often 70–90% depending on the specific plan. Some firms also offer an accelerated first payout as an incentive, while standard payout cycles apply from that point forward.</p>
+          <p>Many firms also offer scaling plans, where the funded account size increases — sometimes doubling — after a trader hits a specific profit milestone over a set number of payout cycles, typically while maintaining the same risk discipline that passed the original evaluation. Scaling plans reward exactly the kind of consistent, controlled performance this guide has emphasized throughout: a trader who reaches the milestone through steady gains with controlled drawdown is in a far stronger position to scale than one who reaches the same milestone through a few high-risk trades that happened to work out. A list of current prop firm discount codes, including offers from several firms with active scaling plans, is available in our <a href="../#deals">Prop Firm Deals</a> section.</p>
+
+          <h2 id="mistakes">Common Mistakes</h2>
+          <div class="mistake-list">
+            <div class="mistake-item">
+              <span class="mi-icon">1</span>
+              <p><strong>Rushing the profit target with oversized risk.</strong> Taking larger-than-normal positions specifically to reach the target faster is the single most common cause of breaching a drawdown rule before the evaluation is even close to complete.</p>
+            </div>
+<div class="mistake-item">
+              <span class="mi-icon">2</span>
+              <p><strong>Misunderstanding which drawdown calculation method applies.</strong> Assuming a static drawdown rule when the firm actually uses a trailing calculation from the account's peak equity has caught many otherwise profitable traders off guard.</p>
+            </div>
+<div class="mistake-item">
+              <span class="mi-icon">3</span>
+              <p><strong>Ignoring consistency rules while chasing the profit target.</strong> Hitting the target through one or two outsized trades, rather than steady performance across multiple days, can fail an evaluation under a firm's consistency rule even without breaching drawdown.</p>
+            </div>
+<div class="mistake-item">
+              <span class="mi-icon">4</span>
+              <p><strong>Treating funded capital with less discipline than personal capital.</strong> Taking larger risks specifically because the money belongs to the firm ignores that the entire rule set is designed to identify and fail exactly this behavior.</p>
+            </div>
+<div class="mistake-item">
+              <span class="mi-icon">5</span>
+              <p><strong>Not reading the specific firm's full rule set before trading.</strong> Rules around news trading, weekend holding, and drawdown calculation vary meaningfully between firms, and assuming one firm's rules apply universally to all of them is a common and avoidable mistake.</p>
+            </div>
+          </div>
+
+          <div class="takeaway-box">
+            <h2 id="takeaways">Key Takeaways</h2>
+            <div class="takeaway-list">
+              <div class="takeaway-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13L9.5 17.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p>A funded account gives traders access to a prop firm's capital after passing an evaluation, in exchange for following a strict drawdown and risk rule set.</p>
+              </div>
+<div class="takeaway-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13L9.5 17.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p>Profit targets, maximum drawdown, daily drawdown, and consistency rules each exist to filter for repeatable skill rather than a single lucky or oversized result.</p>
+              </div>
+<div class="takeaway-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13L9.5 17.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p>The most common reason challenges fail is oversized risk taken to reach the profit target quickly, which is also what breaches drawdown rules the fastest.</p>
+              </div>
+<div class="takeaway-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13L9.5 17.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p>Applying the same disciplined risk management used on a personal account — rather than taking larger risks because the capital isn't personally owned — is the more mathematically sound approach to passing.</p>
+              </div>
+<div class="takeaway-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 13L9.5 17.5L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <p>Once funded, payouts and scaling plans reward consistent, controlled performance over time rather than a single strong result, mirroring the same discipline required to pass the original evaluation.</p>
+              </div>
+            </div>
+          </div>
+
+          <h2 id="faq">Frequently Asked Questions</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>How much does a prop firm evaluation typically cost?</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner"><p>Evaluation fees vary by firm and account size, generally ranging from roughly $50 for smaller account sizes up to several hundred dollars for larger ones. Many firms also offer a partial or full refund of the fee on the first successful payout.</p></div>
+              </div>
+            </div>
+<div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>What's the difference between a one-step and two-step challenge?</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner"><p>A two-step challenge splits the evaluation into two phases with separate, smaller profit targets, typically completed over a longer overall period. A one-step challenge combines everything into a single phase with one profit target, generally offering faster access to a funded account in exchange for completing the full requirement in one pass rather than two.</p></div>
+              </div>
+            </div>
+<div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Can I lose my funded account after passing the evaluation?</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner"><p>Yes. Funded accounts remain subject to the same maximum and daily drawdown rules that applied during the evaluation. Breaching either rule on a live funded account typically results in the account being closed, in the same way it would have failed the original challenge.</p></div>
+              </div>
+            </div>
+<div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Do all prop firms use the same drawdown rules?</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner"><p>No — maximum drawdown percentage, whether it's calculated as static or trailing, daily drawdown limits, and consistency rules all vary meaningfully between firms. Reviewing a specific firm's full rule set before starting an evaluation is essential, since assuming one firm's rules apply to another can lead to an avoidable failure.</p></div>
+              </div>
+            </div>
+<div class="faq-item">
+              <button class="faq-question" aria-expanded="false">
+                <span>Is it worth using a discount code for a prop firm challenge?</span>
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-answer">
+                <div class="faq-answer-inner"><p>If you've already decided which firm's rule set fits your trading approach, a discount code simply reduces the cost of an evaluation you were going to attempt anyway. It shouldn't be the deciding factor in choosing a firm — the rule structure and payout terms matter considerably more to long-term success than the initial fee.</p></div>
+              </div>
+            </div>
+          </div>
+
+
+          <h2 id="related">Related Topics</h2>
+          <div class="related-grid">
+<a href="../risk-management/" class="related-card reveal">
+              <span class="related-tag">Foundations</span>
+              <h4>Risk Management</h4>
+              <p>The exact per-trade and daily risk discipline that determines whether a challenge's drawdown rules get breached.</p>
+            </a>
+<a href="../trading-psychology/" class="related-card reveal">
+              <span class="related-tag">Foundations</span>
+              <h4>Trading Psychology</h4>
+              <p>Why revenge trading and overtrading are two of the most common reasons evaluations fail.</p>
+            </a>
+<a href="../#tools" class="related-card reveal">
+              <span class="related-tag">Tools</span>
+              <h4>Trading Journal</h4>
+              <p>Tracking every challenge trade, including the reasoning and emotional state behind it, to catch process failures early.</p>
+            </a>
+          </div>
+        </article>
+
+        <aside class="article-rail">
+<div class="rail-card">
+            <h4>On This Page</h4>
+            <nav class="toc-list" aria-label="Table of contents">
+              <a href="#what-is-a-funded-account">What Is a Funded Account?</a>
+<a href="#how-prop-firms-work">How Prop Firms Work</a>
+<a href="#evaluation-challenges">Evaluation Challenges Explained</a>
+<a href="#profit-targets">Profit Targets</a>
+<a href="#max-drawdown">Maximum Drawdown Rules</a>
+<a href="#daily-drawdown">Daily Drawdown Rules</a>
+<a href="#consistency-rules">Consistency Rules</a>
+<a href="#why-traders-fail-challenges">Common Reasons Traders Fail Challenges</a>
+<a href="#risk-management-funded">Risk Management for Funded Accounts</a>
+<a href="#passing-step-by-step">Passing a Challenge Step-by-Step</a>
+<a href="#payouts-and-scaling">Payouts and Scaling Plans</a>
+<a href="#mistakes">Common Mistakes</a>
+<a href="#takeaways">Key Takeaways</a>
+<a href="#faq">FAQ</a>
+            </nav>
+          </div>
+          <div class="rail-card rail-cta">
+            <h4>Keep Learning</h4>
+            <p>Continue the curriculum and unlock the next concept in the ICT &amp; SMC framework.</p>
+            <a href="../#tools" class="btn btn-primary btn-sm">Next: Trading Journal</a>
+          </div>
+        </aside>
+
+      </div>
+
+      <div class="article-pager">
+        <a href="../trading-psychology/" class="pager-link prev">
+          <span class="pager-label"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M13 8H3M3 8L7 4M3 8L7 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Previous Topic</span>
+          <span class="pager-title">Trading Psychology</span>
+        </a>
+        <a href="../#tools" class="pager-link next">
+          <span class="pager-label">Next Topic<svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span class="pager-title">Trading Journal</span>
+        </a>
+      </div>
+
+      <div class="back-library">
+        <a href="../#library" class="btn btn-outline"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 3.5C2 3.5 4 2.5 6 2.5C8 2.5 8 3.5 8 3.5V13C8 13 8 12 6 12C4 12 2 13 2 13V3.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M14 3.5C14 3.5 12 2.5 10 2.5C8 2.5 8 3.5 8 3.5V13C8 13 8 12 10 12C12 12 14 13 14 13V3.5Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg> Back to Trading Library</a>
+      </div>
+
+      <div class="pdf-section" id="pdf-download">
+        <div class="pdf-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 2v6h6" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+        <h2>Download Free PDF</h2>
+        <p>Get the complete "Funded Account Guide" guide as a free PDF — saved for offline reading and quick reference on your charts.</p>
+        <div class="pdf-timer-wrap">
+          <div class="pdf-countdown" id="pdfTimerRow">
+            <span>Download available in</span>
+            <span class="pdf-countdown-num" id="pdfCountdownNum">30</span>
+            <span>sec</span>
+          </div>
+          <div class="pdf-progress"><div class="pdf-progress-bar" id="pdfProgressBar"></div></div>
+          <a href="../funded-account-guide.pdf" id="pdfDownloadBtn" class="btn btn-primary pdf-download-btn" aria-disabled="true" download>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2V11M8 11L4.5 7.5M8 11L11.5 7.5M3 13.5H13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> Download Free PDF
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="section-inner footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../" class="brand" aria-label="Sadik Finance home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 26 26" fill="none">
+              <path d="M2 18L8 11L13 15L24 3" stroke="url(#g2)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 3H24V10" stroke="url(#g2)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs><linearGradient id="g2" x1="2" y1="18" x2="24" y2="3"><stop stop-color="#14F195"/><stop offset="1" stop-color="#00C2FF"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span class="brand-name">Sadik<span class="brand-accent">Finance</span></span>
+        </a>
+        <p>Trading education for ICT &amp; Smart Money Concepts — free PDFs, tools, and curated prop firm deals.</p>
+      </div>
+
+      <nav class="footer-links" aria-label="Library">
+        <h4>Library</h4>
+        <a href="../ict-concepts/">ICT Concepts</a>
+        <a href="../smc-introduction/">SMC Introduction</a>
+        <a href="../smc-introduction/">Market Structure</a>
+        <a href="../liquidity/">Liquidity Masterclass</a>
+      </nav>
+
+      <nav class="footer-links" aria-label="Tools">
+        <h4>Tools</h4>
+        <a href="../#tools">Trading Journal</a>
+        <a href="../#tools">RR Calculator</a>
+        <a href="../#tools">Lot Size Calculator</a>
+        <a href="../#deals">Prop Firm Deals</a>
+      </nav>
+
+      <nav class="footer-links" aria-label="Company">
+        <h4>Company</h4>
+        <a href="../about/">About Us</a>
+        <a href="../contact/">Contact</a>
+        <a href="../privacy-policy/">Privacy Policy</a>
+        <a href="../privacy-policy/">Disclaimer</a>
+      </nav>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Sadik Finance. All rights reserved.</p>
+      <p class="footer-built">Built by <span>Sadik Finance</span></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+// =========================================================
+// SADIK FINANCE — interactions
+// =========================================================
+(function(){
+  'use strict';
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ---------- Mobile menu ---------- */
+  var burger = document.getElementById('navBurger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if (burger && mobileMenu) {
+    burger.addEventListener('click', function () {
+      var open = mobileMenu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  /* ---------- Scroll reveal ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && !prefersReducedMotion) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ---------- Animated stat counters ---------- */
+  var statNums = document.querySelectorAll('.stat-num');
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute('data-target'), 10) || 0;
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (prefersReducedMotion) { el.textContent = target + suffix; return; }
+    var start = 0;
+    var duration = 1200;
+    var startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      var val = Math.round(start + (target - start) * eased);
+      el.textContent = val + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  if ('IntersectionObserver' in window) {
+    var statIo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          statIo.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+    statNums.forEach(function (el) { statIo.observe(el); });
+  }
+
+  /* ---------- Newsletter form (front-end only demo) ---------- */
+  var form = document.getElementById('newsletterForm');
+  var note = document.getElementById('newsletterNote');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var email = document.getElementById('emailInput').value.trim();
+      if (!email) return;
+      note.textContent = "You're in — check your inbox for a confirmation email.";
+      form.reset();
+    });
+  }
+
+  /* ---------- Hero "Market Structure" canvas ----------
+     Draws an animated price-action line with a BOS break,
+     a liquidity sweep wick, and a soft glow under the line —
+     the literal subject matter of the curriculum as the hero visual. */
+  var canvas = document.getElementById('structureCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var width, height;
+  var path = [];
+  var t = 0;
+
+  function resize() {
+    var hero = canvas.closest('.hero');
+    width = hero.offsetWidth;
+    height = hero.offsetHeight;
+    canvas.width = width * dpr;
+    canvas.height = height * dpr;
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    buildPath();
+  }
+
+  // Build a deterministic "market structure" path: higher highs/lows,
+  // a liquidity sweep below a prior low, then a break of structure up.
+  function buildPath() {
+    path = [];
+    var midY = height * 0.56;
+    var amp = Math.min(height * 0.16, 110);
+    var pts = [
+      [0.00, midY + amp * 0.5],
+      [0.08, midY - amp * 0.2],
+      [0.16, midY + amp * 0.7],   // higher low forming
+      [0.24, midY - amp * 0.6],   // swing high
+      [0.32, midY + amp * 0.95],  // liquidity sweep wick down
+      [0.40, midY + amp * 0.1],   // sharp reclaim
+      [0.50, midY - amp * 0.55],
+      [0.58, midY - amp * 0.1],
+      [0.66, midY - amp * 1.05],  // BOS to the upside
+      [0.76, midY - amp * 0.75],
+      [0.86, midY - amp * 1.3],
+      [1.00, midY - amp * 1.05]
+    ];
+    path = pts.map(function (p) { return { x: p[0] * width, y: p[1] }; });
+  }
+
+  function catmullRom(p0, p1, p2, p3, t) {
+    var t2 = t * t, t3 = t2 * t;
+    return 0.5 * ((2 * p1) + (-p0 + p2) * t + (2 * p0 - 5 * p1 + 4 * p2 - p3) * t2 + (-p0 + 3 * p1 - 3 * p2 + p3) * t3);
+  }
+
+  function drawSmoothLine(ctx, pts, drawFraction) {
+    var totalSegs = pts.length - 1;
+    var visibleSegs = totalSegs * drawFraction;
+    ctx.beginPath();
+    ctx.moveTo(pts[0].x, pts[0].y);
+    for (var i = 0; i < totalSegs; i++) {
+      if (i > visibleSegs) break;
+      var p0 = pts[i === 0 ? 0 : i - 1];
+      var p1 = pts[i];
+      var p2 = pts[i + 1];
+      var p3 = pts[i + 2] || p2;
+      var segFraction = Math.min(1, visibleSegs - i);
+      var steps = 14;
+      for (var s = 1; s <= steps; s++) {
+        var st = (s / steps) * segFraction;
+        if (st > segFraction) break;
+        var x = catmullRom(p0.x, p1.x, p2.x, p3.x, st);
+        var y = catmullRom(p0.y, p1.y, p2.y, p3.y, st);
+        ctx.lineTo(x, y);
+      }
+    }
+  }
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+    t += 0.0035;
+    var drawFraction = Math.min(1, t);
+
+    // glow fill under the line
+    ctx.save();
+    drawSmoothLine(ctx, path, drawFraction);
+    var lastPt = path[Math.min(path.length - 1, Math.ceil(drawFraction * (path.length - 1)))];
+    ctx.lineTo(lastPt.x, height);
+    ctx.lineTo(path[0].x, height);
+    ctx.closePath();
+    var fillGrad = ctx.createLinearGradient(0, 0, 0, height);
+    fillGrad.addColorStop(0, 'rgba(20,241,149,0.16)');
+    fillGrad.addColorStop(1, 'rgba(20,241,149,0)');
+    ctx.fillStyle = fillGrad;
+    ctx.fill();
+    ctx.restore();
+
+    // main line
+    ctx.save();
+    drawSmoothLine(ctx, path, drawFraction);
+    var strokeGrad = ctx.createLinearGradient(0, 0, width, 0);
+    strokeGrad.addColorStop(0, '#00C2FF');
+    strokeGrad.addColorStop(1, '#14F195');
+    ctx.strokeStyle = strokeGrad;
+    ctx.lineWidth = 2.2;
+    ctx.lineJoin = 'round';
+    ctx.lineCap = 'round';
+    ctx.shadowColor = 'rgba(20,241,149,0.55)';
+    ctx.shadowBlur = 14;
+    ctx.stroke();
+    ctx.restore();
+
+    // leading dot
+    if (drawFraction < 1) {
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(lastPt.x, lastPt.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = '#14F195';
+      ctx.shadowColor = '#14F195';
+      ctx.shadowBlur = 16;
+      ctx.fill();
+      ctx.restore();
+    } else {
+      // loop gently: fade and restart
+      t = -0.15;
+    }
+
+    requestAnimationFrame(render);
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+  if (!prefersReducedMotion) {
+    requestAnimationFrame(render);
+  } else {
+    // static final-state render for reduced motion
+    t = 1;
+    ctx.clearRect(0, 0, width, height);
+    drawSmoothLine(ctx, path, 1);
+    ctx.strokeStyle = '#14F195';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
+
+})();
+
+  
+
+/* =========================================================
+   ARTICLE PAGE EXTENSIONS — pure JS, no dependencies
+========================================================= */
+(function () {
+  'use strict';
+
+  /* ---------- PDF download countdown ---------- */
+  var countdownEl = document.getElementById('pdfCountdownNum');
+  var progressBar = document.getElementById('pdfProgressBar');
+  var downloadBtn = document.getElementById('pdfDownloadBtn');
+  var timerWrap = document.getElementById('pdfTimerRow');
+
+  if (countdownEl && downloadBtn) {
+    var totalSeconds = 30;
+    var remaining = totalSeconds;
+    countdownEl.textContent = remaining;
+
+    var interval = setInterval(function () {
+      remaining -= 1;
+      if (remaining <= 0) {
+        clearInterval(interval);
+        countdownEl.textContent = 0;
+        if (progressBar) progressBar.style.width = '100%';
+        if (timerWrap) timerWrap.style.display = 'none';
+        downloadBtn.classList.add('ready');
+        downloadBtn.removeAttribute('aria-disabled');
+      } else {
+        countdownEl.textContent = remaining;
+        if (progressBar) {
+          var pct = ((totalSeconds - remaining) / totalSeconds) * 100;
+          progressBar.style.width = pct + '%';
+        }
+      }
+    }, 1000);
+  }
+
+  /* ---------- FAQ accordion ---------- */
+  var faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(function (item) {
+    var btn = item.querySelector('.faq-question');
+    var answer = item.querySelector('.faq-answer');
+    if (!btn || !answer) return;
+    btn.setAttribute('aria-expanded', 'false');
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('open');
+      // close all others
+      faqItems.forEach(function (other) {
+        if (other !== item) {
+          other.classList.remove('open');
+          other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          other.querySelector('.faq-answer').style.maxHeight = '0px';
+        }
+      });
+      if (isOpen) {
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.maxHeight = '0px';
+      } else {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ---------- Table of contents scroll-spy ---------- */
+  var tocLinks = document.querySelectorAll('.toc-list a');
+  if (tocLinks.length && 'IntersectionObserver' in window) {
+    var targets = [];
+    tocLinks.forEach(function (link) {
+      var id = link.getAttribute('href').replace('#', '');
+      var el = document.getElementById(id);
+      if (el) targets.push({ link: link, el: el });
+    });
+    var tocObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var match = targets.find(function (t) { return t.el === entry.target; });
+        if (!match) return;
+        if (entry.isIntersecting) {
+          tocLinks.forEach(function (l) { l.classList.remove('active'); });
+          match.link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
+    targets.forEach(function (t) { tocObserver.observe(t.el); });
+  }
+
+})();
+
+</script>
+</body>
+</html>
