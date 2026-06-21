@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BOS Explained: Break of Structure in Trading (Bullish & Bearish) | Sadik Finance</title>
+<meta name="description" content="The complete guide to Break of Structure (BOS) in ICT trading. Learn bullish and bearish BOS, BOS vs liquidity sweep, BOS vs MSS, entry models, real chart examples, and common mistakes.">
+<meta name="keywords" content="BOS trading, break of structure, bullish BOS, bearish BOS, BOS vs liquidity sweep, BOS vs MSS, ICT BOS, SMC BOS, market structure trading">
+<meta property="og:title" content="BOS Explained: Break of Structure in Trading | Sadik Finance">
+<meta property="og:description" content="Learn what Break of Structure (BOS) means in ICT and SMC trading, how bullish and bearish BOS form, and how to use it as a precise, confirmed entry trigger.">
+<meta property="og:type" content="article">
+<meta name="theme-color" content="#0B1220">
+<link rel="canonical" href="https://sadikfinance.com/learn/bos">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =========================================================
+   SADIK FINANCE — DESIGN TOKENS
+========================================================= */
+:root{
+  --bg: #0B1220;
+  --bg-rgb: 11,18,32;
+  --card: #111827;
+  --card-rgb: 17,24,39;
+  --primary: #14F195;
+  --primary-rgb: 20,241,149;
+  --secondary: #00C2FF;
+  --secondary-rgb: 0,194,255;
+  --text: #FFFFFF;
+  --muted: #94A3B8;
+  --border: rgba(148,163,184,0.14);
+  --border-strong: rgba(148,163,184,0.24);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --shadow-card: 0 1px 0 rgba(255,255,255,0.03) inset, 0 20px 50px -25px rgba(0,0,0,0.6);
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+*,*::before,*::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+html,body{ margin:0; padding:0; }
+body{
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img{ max-width:100%; display:block; }
+a{ color: inherit; text-decoration: none; }
+button{ font-family: inherit; cursor: pointer; }
+ul{ margin:0; padding:0; }
+h1,h2,h3,h4{ margin:0; font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; }
+p{ margin:0; }
+.sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+.skip-link{ position:absolute; left:-9999px; top:0; z-index:200; background:var(--primary); color:#03150D; padding:10px 16px; border-radius: 0 0 10px 0; font-weight:700; font-size:14px; }
+.skip-link:focus{ left:0; }
+:focus-visible{ outline: 2px solid var(--secondary); outline-offset: 3px; border-radius: 4px; }
+
+/* =========================================================
+   LAYOUT
+========================================================= */
+.section-inner{ max-width: 1240px; margin: 0 auto; padding: 0 28px; }
+.section{ padding: 100px 0; position: relative; }
+@media (max-width: 768px){ .section{ padding: 48px 0; } .section-inner{ padding: 0 16px; } }
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--secondary);
+  padding: 6px 12px 6px 10px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: rgba(0,194,255,0.06);
+}
+.eyebrow-static{ background: rgba(20,241,149,0.06); color: var(--primary); border-color: rgba(20,241,149,0.2); }
+.eyebrow .dot{ width:6px; height:6px; border-radius:50%; background: currentColor; box-shadow: 0 0 8px currentColor; }
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  font-weight: 600; font-size: 14.5px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease), color .25s var(--ease);
+  white-space: nowrap;
+}
+.btn svg{ transition: transform 0.25s var(--ease); }
+.btn:hover svg{ transform: translateX(2px); }
+.btn-primary{ background: linear-gradient(135deg, var(--primary), var(--secondary)); color: #04150D; }
+.btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 12px 30px -8px rgba(20,241,149,0.45); }
+.btn-outline{ border-color: var(--border-strong); color: var(--text); background: rgba(255,255,255,0.02); }
+.btn-outline:hover{ border-color: var(--secondary); color: var(--secondary); transform: translateY(-2px); }
+.btn-ghost{ color: var(--text); background: transparent; }
+.btn-ghost:hover{ color: var(--secondary); }
+.btn-lg{ padding: 15px 28px; font-size: 15.5px; border-radius: 12px; }
+.btn-sm{ padding: 9px 16px; font-size: 13.5px; border-radius: 8px; }
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+.nav{
+  position: sticky; top:0; z-index:100;
+  background: rgba(11,18,32,0.7);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner{ max-width: 1240px; margin:0 auto; padding: 16px 28px; display:flex; align-items:center; justify-content:space-between; gap: 24px; }
+.brand{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.brand-mark{ display:flex; }
+.brand-name{ font-family: var(--font-display); font-weight:700; font-size:17px; letter-spacing:-0.01em; }
+.brand-accent{ color: var(--primary); }
+.nav-links{ display:flex; align-items:center; gap: 30px; }
+.nav-links a{ font-size: 14.5px; color: var(--muted); font-weight:500; position: relative; transition: color 0.2s; padding: 4px 0; }
+.nav-links a::after{ content:''; position:absolute; left:0; bottom:-2px; width:0; height:1.5px; background: linear-gradient(90deg, var(--primary), var(--secondary)); transition: width 0.25s var(--ease); }
+.nav-links a:hover{ color: var(--text); }
+.nav-links a:hover::after{ width:100%; }
+.nav-cta{ display:flex; align-items:center; gap:10px; flex-shrink:0; }
+.nav-burger{ display:none; flex-direction:column; gap:5px; background:none; border:none; padding:6px; }
+.nav-burger span{ width:22px; height:2px; background: var(--text); border-radius:2px; transition: 0.25s var(--ease); }
+.nav-burger[aria-expanded="true"] span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+.nav-burger[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+.nav-burger[aria-expanded="true"] span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu{ display:none; flex-direction:column; gap:4px; max-height:0; overflow:hidden; border-top: 1px solid var(--border); background: rgba(11,18,32,0.97); transition: max-height 0.35s var(--ease); }
+.mobile-menu.open{ max-height: 420px; }
+.mobile-menu a{ padding: 14px 28px; color: var(--muted); font-weight:500; font-size:15px; border-bottom: 1px solid var(--border); }
+.mobile-cta{ display:flex; gap:10px; padding: 16px 28px; }
+.mobile-cta .btn{ flex:1; }
+@media (max-width: 900px){ .nav-links, .nav-cta{ display:none; } .nav-burger{ display:flex; } .mobile-menu{ display:flex; } }
+
+/* =========================================================
+   ARTICLE HERO
+========================================================= */
+.article-hero{
+  position: relative;
+  padding: 72px 0 52px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.article-hero-glow{
+  position:absolute; border-radius:50%; filter: blur(90px); z-index:0; pointer-events:none;
+}
+.article-hero-glow-a{ width:500px; height:400px; top:-120px; left:5%; background: radial-gradient(circle, rgba(var(--primary-rgb),0.18), transparent 70%); }
+.article-hero-glow-b{ width:480px; height:380px; top:-100px; right:4%; background: radial-gradient(circle, rgba(var(--secondary-rgb),0.14), transparent 70%); }
+.article-hero-grid{
+  position:absolute; inset:0; z-index:0;
+  background-image: linear-gradient(rgba(148,163,184,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,0.05) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 20%, black 0%, transparent 80%);
+}
+.article-hero-inner{ position:relative; z-index:1; max-width: 820px; }
+
+.article-breadcrumb{
+  display:flex; align-items:center; gap:8px;
+  font-size: 13px; color: var(--muted); margin-bottom: 28px;
+  font-family: var(--font-mono);
+}
+.article-breadcrumb a{ color: var(--muted); transition: color 0.2s; }
+.article-breadcrumb a:hover{ color: var(--primary); }
+.article-breadcrumb .sep{ opacity: 0.4; }
+
+.article-title{
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.08;
+  margin: 16px 0 18px;
+  color: #FFFFFF;
+}
+@supports (-webkit-background-clip: text) or (background-clip: text){
+  .article-title{
+    background: linear-gradient(180deg, #FFFFFF 30%, rgba(255,255,255,0.78));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+}
+.article-sub{ color: var(--muted); font-size: clamp(15px,1.5vw,17.5px); max-width: 600px; margin-bottom: 30px; line-height: 1.65; }
+.article-meta{
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+  font-size: 13px; color: var(--muted); font-family: var(--font-mono);
+}
+.article-meta-item{ display:flex; align-items:center; gap:6px; }
+.article-meta-dot{ width:4px; height:4px; border-radius:50%; background: var(--border-strong); }
+
+/* fade-up animation */
+.fade-up{ opacity:0; transform: translateY(16px); animation: fadeUp 0.7s var(--ease) forwards; animation-delay: var(--d, 0s); }
+@keyframes fadeUp{ to{ opacity:1; transform:none; } }
+
+/* reveal on scroll */
+.reveal{ opacity:0; transform: translateY(20px); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease); }
+.reveal.is-visible{ opacity:1; transform:none; }
+
+/* =========================================================
+   ARTICLE LAYOUT
+========================================================= */
+.article-layout{
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 48px;
+  align-items: start;
+}
+@media (max-width: 1024px){ .article-layout{ grid-template-columns: 1fr; } }
+
+/* =========================================================
+   ARTICLE BODY
+========================================================= */
+.article-body{ max-width: 100%; min-width: 0; }
+.article-body h2{
+  font-size: clamp(22px, 2.6vw, 28px);
+  margin: 52px 0 16px;
+  color: var(--text);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.article-body h2:first-child{ margin-top: 0; }
+.article-body h3{ font-size: 19px; margin: 32px 0 12px; color: var(--text); }
+.article-body p{ color: var(--muted); font-size: 16px; line-height: 1.75; margin-bottom: 18px; }
+.article-body p:last-child{ margin-bottom: 0; }
+.article-body ul{ list-style: none; padding:0; margin: 0 0 18px; display:flex; flex-direction:column; gap:10px; }
+.article-body ul li{
+  color: var(--muted); font-size: 16px; line-height: 1.65;
+  padding-left: 22px; position: relative;
+}
+.article-body ul li::before{
+  content:''; position:absolute; left:0; top: 10px;
+  width: 6px; height: 6px; border-radius:50%;
+  background: var(--primary); box-shadow: 0 0 6px rgba(var(--primary-rgb),0.5);
+}
+.article-body ol{ padding-left: 22px; margin: 0 0 18px; display:flex; flex-direction:column; gap:10px; }
+.article-body ol li{ color: var(--muted); font-size: 16px; line-height: 1.65; }
+.article-body strong{ color: var(--text); font-weight:600; }
+.article-body a{ color: var(--primary); text-decoration: underline; text-underline-offset: 3px; }
+.article-body a:hover{ color: var(--secondary); }
+
+/* concept card */
+.concept-card{
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.9), rgba(var(--card-rgb),0.55));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px 26px;
+  margin: 28px 0;
+  box-shadow: var(--shadow-card);
+  position: relative; overflow: hidden;
+}
+.concept-card::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+.concept-card-label{
+  font-family: var(--font-mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
+  color: var(--secondary); margin-bottom: 10px;
+}
+.concept-card h4{ font-size: 17px; margin-bottom: 10px; }
+.concept-card p{ color: var(--muted); font-size: 14.5px; line-height: 1.6; margin:0; }
+
+/* callout / info box */
+.callout{
+  background: rgba(var(--primary-rgb),0.06);
+  border: 1px solid rgba(var(--primary-rgb),0.22);
+  border-radius: var(--radius-sm);
+  padding: 18px 22px;
+  margin: 28px 0;
+  display:flex; gap:14px;
+}
+.callout-icon{ flex-shrink:0; width:22px; height:22px; color: var(--primary); margin-top:1px; }
+.callout-text{ color: var(--muted); font-size:15px; line-height:1.65; }
+.callout-text strong{ color: var(--primary); }
+
+.callout--blue{
+  background: rgba(var(--secondary-rgb),0.06);
+  border-color: rgba(var(--secondary-rgb),0.22);
+}
+.callout--blue .callout-icon{ color: var(--secondary); }
+.callout--blue .callout-text strong{ color: var(--secondary); }
+
+.callout--warning{
+  background: rgba(245,158,11,0.06);
+  border-color: rgba(245,158,11,0.25);
+}
+.callout--warning .callout-icon{ color: #F59E0B; }
+.callout--warning .callout-text strong{ color: #F59E0B; }
+
+/* stat cards */
+.stat-row{ display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin: 32px 0; }
+@media (max-width:640px){ .stat-row{ grid-template-columns:1fr; } }
+.stat-card{
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.9), rgba(var(--card-rgb),0.55));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  text-align:center;
+}
+.stat-card-value{ font-family: var(--font-display); font-size: 28px; font-weight:700; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:6px; }
+.stat-card-label{ color: var(--muted); font-size: 13px; line-height:1.4; }
+
+/* Table */
+.table-wrap{ overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 28px 0; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+.article-table{ width:100%; border-collapse:collapse; min-width: 480px; }
+.article-table th{ text-align:left; padding: 12px 16px; font-family: var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color: var(--muted); background: rgba(var(--card-rgb),0.8); border-bottom: 1px solid var(--border-strong); }
+.article-table td{ padding: 13px 16px; color: var(--muted); font-size:14.5px; border-bottom: 1px solid var(--border); }
+.article-table tr:last-child td{ border-bottom: none; }
+.article-table tr:hover td{ background: rgba(255,255,255,0.015); }
+.article-table td strong{ color: var(--text); }
+.tag-green{ display:inline-block; background: rgba(var(--primary-rgb),0.12); color: var(--primary); font-family: var(--font-mono); font-size:11px; padding:3px 8px; border-radius:4px; }
+.tag-blue{ display:inline-block; background: rgba(var(--secondary-rgb),0.12); color: var(--secondary); font-family: var(--font-mono); font-size:11px; padding:3px 8px; border-radius:4px; }
+.tag-red{ display:inline-block; background: rgba(239,68,68,0.12); color: #F87171; font-family: var(--font-mono); font-size:11px; padding:3px 8px; border-radius:4px; }
+
+/* =========================================================
+   KEY TAKEAWAYS
+========================================================= */
+.takeaways{
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.9), rgba(var(--card-rgb),0.55));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 34px;
+  margin: 48px 0;
+  position: relative; overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.takeaways::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+.takeaways-title{
+  font-family: var(--font-display); font-size:18px; font-weight:600;
+  margin-bottom: 20px; display:flex; align-items:center; gap:10px;
+}
+.takeaways-title svg{ color: var(--primary); }
+.takeaways-list{ display:flex; flex-direction:column; gap:12px; list-style:none; padding:0; margin:0; }
+.takeaways-list li{
+  display:flex; align-items:flex-start; gap:12px;
+  color: var(--muted); font-size:15px; line-height:1.6;
+}
+.takeaways-list li .tk-icon{
+  flex-shrink:0; width:20px; height:20px; border-radius:50%;
+  background: rgba(var(--primary-rgb),0.14);
+  display:flex; align-items:center; justify-content:center;
+  color: var(--primary); margin-top:2px;
+}
+
+/* =========================================================
+   FAQ
+========================================================= */
+.faq-list{ display:flex; flex-direction:column; gap:14px; margin-top: 32px; }
+.faq-item{
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.85), rgba(var(--card-rgb),0.5));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.25s var(--ease);
+}
+.faq-item:hover{ border-color: var(--border-strong); }
+.faq-q{
+  width:100%; padding: 20px 22px;
+  background: none; border: none; color: var(--text);
+  font-family: var(--font-display); font-size:16px; font-weight:600;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  text-align:left; cursor:pointer;
+  transition: color 0.2s;
+}
+.faq-q:hover{ color: var(--primary); }
+.faq-chevron{ flex-shrink:0; transition: transform 0.3s var(--ease); }
+.faq-item.open .faq-chevron{ transform: rotate(180deg); }
+.faq-a{ max-height:0; overflow:hidden; transition: max-height 0.4s var(--ease); }
+.faq-item.open .faq-a{ max-height: 400px; }
+.faq-a-inner{ padding: 0 22px 20px; color: var(--muted); font-size:15px; line-height:1.7; }
+
+/* =========================================================
+   RELATED TOPICS
+========================================================= */
+.related-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:16px; margin-top:28px; }
+@media (max-width:700px){ .related-grid{ grid-template-columns:1fr; } }
+.related-card{
+  padding: 20px 22px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.85), rgba(var(--card-rgb),0.5));
+  border: 1px solid var(--border);
+  display:flex; flex-direction:column; gap:8px;
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.related-card:hover{ transform: translateY(-4px); border-color: rgba(var(--secondary-rgb),0.4); }
+.related-tag{ font-family: var(--font-mono); font-size:11px; letter-spacing:0.05em; text-transform:uppercase; color: var(--secondary); }
+.related-card h4{ font-size:15px; line-height:1.4; }
+.related-card p{ color: var(--muted); font-size:13.5px; line-height:1.5; margin:0; }
+.related-arrow{ color: var(--primary); font-size:13px; font-weight:600; margin-top:4px; display:inline-flex; align-items:center; gap:5px; transition: gap 0.2s; }
+.related-card:hover .related-arrow{ gap:9px; }
+
+/* =========================================================
+   PDF DOWNLOAD
+========================================================= */
+.pdf-box{
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.95), rgba(var(--card-rgb),0.7));
+  border: 1px solid rgba(var(--primary-rgb),0.28);
+  border-radius: var(--radius-lg);
+  padding: 36px 38px;
+  margin: 56px 0 0;
+  position: relative; overflow: hidden;
+  box-shadow: 0 0 60px -20px rgba(var(--primary-rgb),0.2), var(--shadow-card);
+  text-align: center;
+}
+.pdf-box::before{
+  content:''; position:absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+.pdf-glow{
+  position:absolute; top:-60px; left:50%; transform:translateX(-50%);
+  width:400px; height:200px;
+  background: radial-gradient(circle, rgba(var(--primary-rgb),0.12), transparent 70%);
+  pointer-events:none;
+}
+.pdf-icon{ width:54px; height:54px; border-radius:14px; background: linear-gradient(135deg, rgba(var(--primary-rgb),0.18), rgba(var(--secondary-rgb),0.12)); display:flex; align-items:center; justify-content:center; margin: 0 auto 18px; color: var(--primary); }
+.pdf-title{ font-size:22px; margin-bottom:8px; }
+.pdf-sub{ color: var(--muted); font-size:14.5px; margin-bottom:24px; max-width:420px; margin-left:auto; margin-right:auto; line-height:1.6; }
+.pdf-countdown{
+  display:inline-flex; align-items:center; gap:10px;
+  font-family: var(--font-mono); font-size:14px; color: var(--muted);
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border-strong);
+  border-radius:10px; padding: 12px 20px; margin-bottom: 20px;
+}
+.pdf-countdown-num{ font-size:22px; font-weight:600; color: var(--secondary); min-width:28px; display:inline-block; text-align:center; }
+.pdf-download{ display:none; }
+.pdf-download.show{ display:inline-flex; }
+
+/* =========================================================
+   PREV / NEXT NAV
+========================================================= */
+.article-nav{
+  display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:60px;
+}
+@media (max-width:600px){ .article-nav{ grid-template-columns:1fr; } }
+.article-nav-card{
+  padding: 22px 24px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.85), rgba(var(--card-rgb),0.5));
+  border: 1px solid var(--border);
+  transition: transform 0.3s var(--ease), border-color 0.3s var(--ease);
+  display:flex; flex-direction:column; gap:6px;
+}
+.article-nav-card:hover{ transform: translateY(-4px); border-color: rgba(var(--primary-rgb),0.35); }
+.article-nav-label{ font-family: var(--font-mono); font-size:11.5px; letter-spacing:0.05em; text-transform:uppercase; color: var(--muted); }
+.article-nav-title{ font-size:16px; font-weight:600; color: var(--text); transition: color 0.2s; }
+.article-nav-card:hover .article-nav-title{ color: var(--primary); }
+.article-nav-card--next{ text-align:right; }
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+.article-sidebar{ position:sticky; top: 90px; }
+.toc{
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.9), rgba(var(--card-rgb),0.55));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 24px 22px;
+  margin-bottom: 20px;
+}
+.toc-title{ font-size:13px; text-transform:uppercase; letter-spacing:0.06em; color: var(--muted); font-family: var(--font-mono); margin-bottom: 14px; }
+.toc-list{ list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:2px; }
+.toc-list li a{
+  display:block; padding: 6px 10px; border-radius:6px;
+  color: var(--muted); font-size:13.5px; transition: color 0.2s, background 0.2s;
+}
+.toc-list li a:hover{ color: var(--primary); background: rgba(var(--primary-rgb),0.07); }
+.toc-list li a.active{ color: var(--primary); background: rgba(var(--primary-rgb),0.1); }
+.sidebar-card{
+  background: linear-gradient(160deg, rgba(var(--card-rgb),0.85), rgba(var(--card-rgb),0.5));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+.sidebar-card-title{ font-size:15px; margin-bottom:10px; }
+.sidebar-card p{ color: var(--muted); font-size:13.5px; line-height:1.6; margin-bottom:14px; }
+
+/* =========================================================
+   TICK DIVIDER & FOOTER
+========================================================= */
+.tick-divider{ height:1px; max-width:1240px; margin:0 auto; background: linear-gradient(90deg, transparent, var(--border-strong) 15%, var(--border-strong) 85%, transparent); position:relative; }
+.tick-divider::before{ content:''; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:5px; height:5px; border-radius:50%; background:var(--primary); box-shadow:0 0 12px rgba(var(--primary-rgb),0.7); }
+
+.footer{ border-top: 1px solid var(--border); padding: 64px 0 28px; }
+.footer-top{ display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 48px; border-bottom: 1px solid var(--border); }
+.footer-brand p{ color: var(--muted); font-size: 14px; margin-top: 14px; max-width: 280px; line-height:1.6; }
+.footer-links h4{ font-size: 13px; color: var(--text); text-transform:uppercase; letter-spacing:0.05em; margin-bottom: 16px; }
+.footer-links{ display:flex; flex-direction:column; gap:11px; }
+.footer-links a{ color: var(--muted); font-size: 14.5px; transition: color 0.2s; }
+.footer-links a:hover{ color: var(--primary); }
+.footer-bottom{ display:flex; align-items:center; justify-content:space-between; padding-top: 24px; color: var(--muted); font-size: 13.5px; flex-wrap:wrap; gap:10px; }
+.footer-built span{ color: var(--primary); font-weight:600; }
+@media (max-width: 800px){ .footer-top{ grid-template-columns: 1fr 1fr; gap: 32px 24px; } .footer-brand{ grid-column: span 2; } }
+@media (max-width: 480px){ .footer-top{ grid-template-columns: 1fr; } .footer-brand{ grid-column: span 1; } .footer-bottom{ flex-direction:column; align-items:flex-start; } }
+
+/* =========================================================
+   MOBILE FIXES — baked in from the start
+========================================================= */
+@media (max-width: 768px){
+  .article-hero{ padding: 52px 0 36px !important; }
+  .article-hero-glow-a, .article-hero-glow-b{ display:none !important; }
+  .article-title{ font-size: clamp(26px,7vw,38px) !important; line-height:1.1 !important; }
+  .article-sub{ font-size:15px !important; }
+  .article-layout{ grid-template-columns:1fr !important; padding:40px 0 64px !important; gap:28px !important; }
+  .article-body{ max-width:100% !important; min-width:0 !important; overflow-x:hidden !important; }
+  .article-body p{ font-size:15px !important; line-height:1.7 !important; }
+  .article-body h2{ font-size:20px !important; margin:40px 0 12px !important; }
+  .article-body h3{ font-size:17px !important; margin:28px 0 10px !important; }
+  .article-body ul li, .article-body ol li{ font-size:15px !important; }
+  .section{ padding:40px 0 !important; }
+  .section-inner{ padding:0 16px !important; }
+  .concept-card{ padding:18px 16px !important; }
+  .takeaways{ padding:24px 20px !important; }
+  .takeaways-list li{ font-size:14px; }
+  .pdf-box{ padding:28px 20px !important; }
+  .related-grid{ grid-template-columns:1fr !important; gap:12px !important; }
+  .stat-row{ grid-template-columns:1fr !important; gap:12px !important; }
+  .article-nav{ grid-template-columns:1fr !important; }
+  .article-hero-inner{ max-width:100% !important; }
+  .faq-q{ font-size:14.5px !important; padding:16px 16px !important; }
+  .faq-a-inner{ padding:0 16px 16px !important; }
+  .article-meta{ gap:10px !important; font-size:12px !important; }
+  .article-breadcrumb{ font-size:12px !important; flex-wrap:wrap !important; }
+  .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+  .fade-up{ opacity:1 !important; transform:none !important; animation:none !important; }
+}
+@media (max-width: 480px){
+  .article-title{ font-size:24px !important; }
+  .article-hero{ padding:40px 0 24px !important; }
+  .section-inner{ padding:0 14px !important; }
+  .pdf-box{ padding:22px 14px !important; }
+  .pdf-title{ font-size:18px !important; }
+  .nav-inner{ padding: 14px 16px !important; }
+}
+
+/* =========================================================
+   DIAGRAM PLACEHOLDER (uses existing tokens — no new theme)
+========================================================= */
+.diagram-box{
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius-md);
+  background: rgba(255,255,255,0.015);
+  padding: 36px 24px;
+  margin: 28px 0;
+  text-align: center;
+  color: var(--muted);
+}
+.diagram-box svg{ color: var(--secondary); margin-bottom: 12px; }
+.diagram-box-label{ font-family: var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:0.06em; color: var(--secondary); margin-bottom:8px; }
+.diagram-box p{ font-size: 13.5px; max-width: 480px; margin: 0 auto; color: var(--muted); }
+@media (max-width:768px){ .diagram-box{ padding:26px 16px !important; } }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "BOS Guide: Break of Structure Explained",
+  "description": "The complete guide to Break of Structure (BOS) in ICT trading — bullish and bearish BOS, BOS vs liquidity sweep, BOS vs MSS, entry models, and real chart examples.",
+  "author": { "@type": "Organization", "name": "Sadik Finance" },
+  "publisher": { "@type": "Organization", "name": "Sadik Finance" }
+}
+</script>
+</head>
+
+<body>
+
+<a href="#main" class="skip-link">Skip to main content</a>
+
+<!-- ============ NAVBAR ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../" class="brand" aria-label="Sadik Finance home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+          <path d="M2 18L8 11L13 15L24 3" stroke="url(#gNav)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M17 3H24V10" stroke="url(#gNav)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs><linearGradient id="gNav" x1="2" y1="18" x2="24" y2="3"><stop stop-color="#14F195"/><stop offset="1" stop-color="#00C2FF"/></linearGradient></defs>
+        </svg>
+      </span>
+      <span class="brand-name">Sadik<span class="brand-accent">Finance</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../#library">Library</a>
+      <a href="../#tools">Tools</a>
+      <a href="../#deals">Prop Deals</a>
+      <a href="../#guides">Guides</a>
+      <a href="../#newsletter">Community</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="../#tools" class="btn btn-ghost">Open Tools</a>
+      <a href="../#library" class="btn btn-primary">Explore Library</a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="../#library">Library</a>
+    <a href="../#tools">Tools</a>
+    <a href="../#deals">Prop Deals</a>
+    <a href="../#guides">Guides</a>
+    <a href="../#newsletter">Community</a>
+    <div class="mobile-cta">
+      <a href="../#tools" class="btn btn-ghost">Open Tools</a>
+      <a href="../#library" class="btn btn-primary">Explore Library</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ ARTICLE HERO ============ -->
+  <section class="article-hero">
+    <div class="article-hero-glow article-hero-glow-a" aria-hidden="true"></div>
+    <div class="article-hero-glow article-hero-glow-b" aria-hidden="true"></div>
+    <div class="article-hero-grid" aria-hidden="true"></div>
+    <div class="section-inner">
+      <div class="article-hero-inner">
+        <div class="article-breadcrumb fade-up">
+          <a href="../">Home</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <a href="../#library">Library</a>
+          <span class="sep" aria-hidden="true">/</span>
+          <span>BOS Guide</span>
+        </div>
+        <span class="eyebrow eyebrow-static fade-up" style="--d:0.04s"><span class="dot"></span> Core ICT Concept</span>
+        <h1 class="article-title fade-up" style="--d:0.08s">Break of<br>Structure (BOS)</h1>
+        <p class="article-sub fade-up" style="--d:0.14s">The continuation signal that confirms a trend is still alive. Learn how to read a genuine BOS, separate it from a liquidity sweep, and use it as a precise entry trigger.</p>
+        <div class="article-meta fade-up" style="--d:0.20s">
+          <span class="article-meta-item">
+            <svg width="14" height="14" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" stroke="#94A3B8" stroke-width="1.4"/><path d="M8 5v3.5L10.5 10" stroke="#94A3B8" stroke-width="1.4" stroke-linecap="round"/></svg>
+            16 min read
+          </span>
+          <span class="article-meta-dot"></span>
+          <span class="article-meta-item">Beginner → Advanced</span>
+          <span class="article-meta-dot"></span>
+          <span class="article-meta-item">PDF included</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tick-divider"></div>
+
+  <!-- ============ ARTICLE CONTENT ============ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="article-layout">
+
+        <!-- BODY -->
+        <article class="article-body reveal">
+          <h2 id="what-is-bos">What Is Break of Structure (BOS)?</h2>
+          <p><strong>Break of Structure</strong>, almost always shortened to <strong>BOS</strong>, is the objective, on-chart confirmation that the current trend is continuing. It happens when price closes beyond the most recent relevant swing point <em>in the same direction the market was already moving</em>. If the market is in an uptrend printing higher highs and higher lows, a BOS is the formation of a fresh higher high. If the market is in a downtrend printing lower highs and lower lows, a BOS is the formation of a fresh lower low.</p>
+          <p>BOS sits right at the center of the ICT and SMC structural framework. Before you can trade liquidity sweeps, order blocks, or Fair Value Gaps with any real confidence, you need a reliable way to confirm that the broader directional bias is still intact — and BOS is exactly that confirmation tool.</p>
+
+          <div class="callout">
+            <svg class="callout-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
+            <p class="callout-text"><strong>The foundational rule:</strong> BOS always agrees with the existing trend. If a break goes against the trend instead, that is not a BOS — it is a Market Structure Shift (MSS), covered later in this guide.</p>
+          </div>
+
+          <div class="diagram-box">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div class="diagram-box-label">Diagram Placeholder</div>
+            <p>Annotated chart: an uptrend printing HH/HL, with a horizontal line drawn at the prior swing high and an arrow marking the candle close that confirms the BOS above it.</p>
+          </div>
+
+          <h2 id="why-bos-matters">Why BOS Matters</h2>
+          <p>It is tempting to treat BOS as a minor technicality — just a label for "price made a new high." In practice, it does three things that matter enormously to how you build a trading process around structure:</p>
+          <ul>
+            <li><strong>It confirms directional bias objectively.</strong> Instead of guessing whether a trend is "still good," BOS gives you a binary, rules-based answer: did price close beyond the prior swing point or not.</li>
+            <li><strong>It anchors your entry zones.</strong> The impulsive move that creates a BOS almost always leaves behind an order block or Fair Value Gap — the exact area you will look to enter on the next pullback.</li>
+            <li><strong>It separates real continuation from a failed attempt.</strong> A break that fails to close beyond the level, and instead reverses, is a strong clue that liquidity was simply being swept rather than a genuine trend extension taking place.</li>
+          </ul>
+          <p>Every other concept in this curriculum — liquidity, order blocks, FVGs, CISD — is interpreted relative to whether structure has actually broken. Get comfortable with BOS first, and everything downstream becomes far easier to apply with confidence.</p>
+
+          <h2 id="bullish-bos">Bullish BOS</h2>
+          <p>A bullish BOS forms during an established uptrend. The sequence looks like this: price prints a higher high (HH), pulls back to form a higher low (HL), and then pushes upward again. The moment a candle <strong>closes</strong> above that prior HH — not just wicks above it — the bullish BOS is confirmed.</p>
+          <p>Traders use a confirmed bullish BOS as structural permission to start looking for long entries on the next retracement, ideally into the bullish order block or Fair Value Gap created by the very candle (or candles) that produced the break.</p>
+
+          <div class="concept-card">
+            <div class="concept-card-label">Bullish BOS Checklist</div>
+            <h4>Confirming a Genuine Bullish Break</h4>
+            <p>Existing HH/HL sequence in place · Pullback holds the most recent HL · Strong-bodied candle closes above the prior HH · Impulse leaves behind an FVG or order block to use as an entry zone</p>
+          </div>
+
+          <h2 id="bearish-bos">Bearish BOS</h2>
+          <p>A bearish BOS is the mirror image, occurring during an established downtrend. Price prints a lower low (LL), retraces to a lower high (LH), and then pushes downward again. The candle close beneath the prior LL — again, a close, not merely a wick — confirms the bearish BOS.</p>
+          <p>Just as with the bullish version, short-side traders treat a confirmed bearish BOS as the green light to look for entries on the next retracement upward, ideally into the bearish order block or FVG left behind by the breakdown candle.</p>
+
+          <div class="concept-card">
+            <div class="concept-card-label">Bearish BOS Checklist</div>
+            <h4>Confirming a Genuine Bearish Break</h4>
+            <p>Existing LL/LH sequence in place · Retracement holds the most recent LH · Strong-bodied candle closes below the prior LL · Impulse leaves behind an FVG or order block to use as an entry zone</p>
+          </div>
+
+          <h2 id="bos-vs-sweep">BOS vs. Liquidity Sweep</h2>
+          <p>This is the single most common point of confusion for traders learning structure for the first time. A liquidity sweep and a BOS can look almost identical in the moment they happen — both involve price trading through a prior high or low — but they carry very different implications, and the difference comes down to confirmation and follow-through.</p>
+
+          <div class="table-wrap">
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Characteristic</th>
+                  <th>BOS</th>
+                  <th>Liquidity Sweep</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Candle behaviour</strong></td><td>Closes beyond the level with a strong body</td><td>Often a sharp wick through the level that reverses</td></tr>
+                <tr><td><strong>Follow-through</strong></td><td>Continuation in the same direction</td><td>Frequently reverses shortly after</td></tr>
+                <tr><td><strong>What it signals</strong></td><td>Trend continuation confirmed</td><td>Trapped liquidity, often before a reversal</td></tr>
+                <tr><td><strong>Typical context</strong></td><td>Inside an already-confirmed trend</td><td>At an obvious, heavily tested high/low</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout callout--warning">
+            <svg class="callout-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+            <p class="callout-text"><strong>Critical warning:</strong> Many failed BOS attempts are simply liquidity sweeps in disguise. Price pushes through a swing point, fails to close beyond it with conviction, and reverses instead. Waiting for an actual candle close — not a wick — is the simplest filter for telling the two apart. See our <a href="../liquidity/">Liquidity Masterclass</a> for the full sweep framework.</p>
+          </div>
+
+          <h2 id="bos-vs-mss">BOS vs. MSS</h2>
+          <p>BOS and MSS use the exact same underlying mechanic — a candle closing beyond a swing point — but they point in opposite directions and carry opposite implications. Understanding this distinction clearly will save you from constantly second-guessing whether a break you're looking at is good news or a warning sign for your current bias.</p>
+
+          <div class="table-wrap">
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Characteristic</th>
+                  <th>BOS</th>
+                  <th>MSS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Direction vs. trend</strong></td><td>Same direction (continuation)</td><td>Opposite direction (potential reversal)</td></tr>
+                <tr><td><strong>What it confirms</strong></td><td>Trend remains intact</td><td>Control may be transferring to the other side</td></tr>
+                <tr><td><strong>Trader response</strong></td><td>Look for entries in the trend direction</td><td>Wait for further confirmation before acting</td></tr>
+                <tr><td><strong>Risk if misread</strong></td><td>Lower — aligns with dominant flow</td><td>Higher — can be a temporary pullback, not a real reversal</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>In short: if the break agrees with the trend you are already in, it's a BOS. If it goes against that trend, it's an <a href="../mss/">MSS</a> — and it demands a much stricter confirmation process before you risk any capital on it.</p>
+
+          <h2 id="bos-market-structure">BOS and Market Structure</h2>
+          <p>BOS cannot be understood in isolation from the broader concept of market structure — the ongoing sequence of higher highs, higher lows, lower highs, and lower lows that defines trend direction at any given moment. BOS is simply the event that <em>extends</em> that sequence one swing point further in the direction it was already heading.</p>
+          <p>This is why context always matters more than the break itself. A BOS that occurs on a 15-minute chart but contradicts the dominant 4-hour or daily trend is statistically far less reliable than a 15-minute BOS that confirms and aligns with that higher-timeframe direction. Before trusting any BOS signal, always ask: does this agree with what structure looks like one or two timeframes higher?</p>
+
+          <div class="diagram-box">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div class="diagram-box-label">Diagram Placeholder</div>
+            <p>Multi-timeframe comparison: a 4-hour chart showing an intact uptrend alongside a 15-minute chart showing the corresponding BOS that aligns with — and confirms — that higher-timeframe direction.</p>
+          </div>
+
+          <h2 id="bos-entry-models">BOS Entry Models</h2>
+          <p>Knowing what a BOS is matters far less than knowing what to do once you see one. The following three entry models cover the vast majority of how structure-based traders actually use BOS in live trading.</p>
+
+          <h3>Model 1 — The Order Block Retest</h3>
+          <p>After a confirmed BOS, mark the last opposing candle (or small cluster of candles) immediately before the impulsive breakout move — this is the order block. Wait for price to retrace back into that zone before entering in the direction of the break, with a stop placed just beyond the far side of the order block.</p>
+
+          <h3>Model 2 — The FVG Retracement</h3>
+          <p>The same impulsive move that creates a BOS frequently leaves behind a Fair Value Gap. Many traders prefer entering on a retracement into this gap — either a full fill or a retrace to the gap's midpoint — rather than the order block itself, since the FVG often offers a tighter, more precise entry zone. See the <a href="../fvg/">FVG Guide</a> for the complete mechanics.</p>
+
+          <h3>Model 3 — The Break-and-Retest</h3>
+          <p>The simplest model: wait for the BOS candle to close beyond the swing point, then wait for price to come back and "retest" that exact broken level from the other side before continuing. This model sacrifices some entry precision for simplicity and is often the easiest starting point for traders new to structure-based entries.</p>
+
+          <div class="concept-card">
+            <div class="concept-card-label">Risk Management Note</div>
+            <h4>Always Define Risk Before the Entry Confirms</h4>
+            <p>Regardless of which model you use, your stop should sit beyond the most recent opposing swing point or the far edge of your entry zone — never an arbitrary number of pips or points disconnected from the structure that justified the trade.</p>
+          </div>
+
+          <h2 id="real-examples">Real Trading Examples</h2>
+
+          <h3>Example 1 — Bullish BOS on EUR/USD (1H)</h3>
+          <p>Price builds a clean HH/HL sequence across the London session. A shallow pullback holds the most recent HL, and a strong bullish candle closes above the prior HH, confirming the BOS. The candle's impulsive move leaves behind a Fair Value Gap directly beneath the new high. A trader following Model 2 waits for price to retrace into that FVG, enters long with a stop beneath the most recent HL, and targets the next untaken liquidity pool above.</p>
+
+          <h3>Example 2 — Bearish BOS on Gold Futures (15M)</h3>
+          <p>Price is already in a downtrend, printing a clean LL/LH sequence. A sharp bearish candle closes beneath the most recent LL, confirming the bearish BOS. The order block formed by the candle immediately preceding that move becomes the entry zone. A trader following Model 1 shorts the retest of that order block, with a stop above the most recent LH and a target at the next sell-side liquidity pool below.</p>
+
+          <div class="diagram-box">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            <div class="diagram-box-label">Diagram Placeholder</div>
+            <p>Bearish BOS example: a confirmed lower-low candle close, the resulting order block highlighted at its base, and the retest entry marked with an arrow and stop-loss line.</p>
+          </div>
+
+          <h2 id="common-mistakes">Common BOS Mistakes</h2>
+          <ul>
+            <li><strong>Confirming BOS on a wick instead of a close:</strong> A wick that pokes beyond a swing point without an actual candle close is not yet a valid BOS — it could easily turn into a liquidity sweep instead.</li>
+            <li><strong>Chasing the breakout candle itself:</strong> Entering directly on the BOS candle, rather than waiting for a retracement into an FVG or order block, often means entering at the worst possible price with the least favorable risk-to-reward.</li>
+            <li><strong>Ignoring the higher-timeframe trend:</strong> A lower-timeframe BOS that contradicts the dominant higher-timeframe direction is statistically far less reliable than one that aligns with it.</li>
+            <li><strong>Mislabeling a sweep as a BOS:</strong> Treating a quick, wick-driven sweep of a swing point as trend confirmation — rather than waiting for a genuine candle close — leads to entries right before a reversal.</li>
+            <li><strong>Trading every minor swing break as a BOS:</strong> Not every tiny internal swing break is structurally significant. Reserve real conviction for breaks of swing points that matter on your trading timeframe.</li>
+          </ul>
+
+          <h2 id="related-concepts">Related Topics</h2>
+          <p>BOS connects directly to several other core concepts that complete the structural trading framework.</p>
+
+          <div id="related" class="related-grid">
+            <a href="../smc-introduction/" class="related-card">
+              <span class="related-tag">Core</span>
+              <h4>Market Structure</h4>
+              <p>The swing-point foundation every BOS signal is measured against.</p>
+              <span class="related-arrow">Read guide →</span>
+            </a>
+            <a href="../mss/" class="related-card">
+              <span class="related-tag">Reversal</span>
+              <h4>Market Structure Shift (MSS)</h4>
+              <p>The reversal counterpart to BOS — the first break against the trend.</p>
+              <span class="related-arrow">Read guide →</span>
+            </a>
+            <a href="../liquidity/" class="related-card">
+              <span class="related-tag">Advanced</span>
+              <h4>Liquidity Masterclass</h4>
+              <p>Why sweeps happen right before — or instead of — a genuine BOS.</p>
+              <span class="related-arrow">Read guide →</span>
+            </a>
+          </div>
+
+          <!-- KEY TAKEAWAYS -->
+          <div class="takeaways" id="takeaways">
+            <div class="takeaways-title">
+              <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M10 2l2.09 4.26L17 7.27l-3.5 3.41.83 4.82L10 13.27l-4.33 2.23.83-4.82L3 7.27l4.91-.71L10 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+              Key Takeaways
+            </div>
+            <ul class="takeaways-list">
+              <li><span class="tk-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 5l3 3 5-6"/></svg></span> BOS confirms trend continuation — a new HH in an uptrend, or a new LL in a downtrend.</li>
+              <li><span class="tk-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 5l3 3 5-6"/></svg></span> A genuine BOS requires a candle close beyond the swing point, not just a wick.</li>
+              <li><span class="tk-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 5l3 3 5-6"/></svg></span> A failed BOS attempt is often the same thing as a liquidity sweep — context and follow-through tell them apart.</li>
+              <li><span class="tk-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 5l3 3 5-6"/></svg></span> BOS confirms continuation; MSS signals a potential reversal — same mechanic, opposite meaning.</li>
+              <li><span class="tk-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 5l3 3 5-6"/></svg></span> Enter on the retracement into the resulting FVG or order block, not directly on the breakout candle.</li>
+              <li><span class="tk-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M1 5l3 3 5-6"/></svg></span> Always align lower-timeframe BOS signals with the higher-timeframe trend before trusting them.</li>
+            </ul>
+          </div>
+
+          <!-- FAQ -->
+          <h2 id="faq">Frequently Asked Questions</h2>
+          <div class="faq-list">
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Does BOS require a candle close, or is a wick enough?
+                <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">Most traders require a confirmed candle close beyond the swing point. A wick alone is too easily reversed and is often the sign of a liquidity sweep rather than a genuine structural break.</div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Is BOS bullish or bearish only, or can it apply to ranges?
+                <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">BOS specifically describes trend continuation, so it applies to established uptrends (bullish BOS) and downtrends (bearish BOS). In a true range, there is no dominant trend for a BOS to confirm — you are simply watching for the eventual breakout instead.</div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                What timeframe is best for spotting BOS?
+                <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">BOS works on any timeframe, but signals on higher timeframes (1H and above) tend to be more reliable than on very low timeframes, which generate more noise and more false breaks.</div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Should I enter immediately on a confirmed BOS?
+                <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">Most experienced traders wait for a retracement into the FVG or order block created by the BOS move, rather than entering directly on the breakout candle, to get a meaningfully better risk-to-reward ratio.</div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                Can a BOS fail after it's confirmed?
+                <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">Yes. No structural signal works 100% of the time. A confirmed BOS can still reverse shortly after, which is exactly why a defined stop-loss beyond the relevant swing point or entry zone is non-negotiable, regardless of how clean the break looked.</div></div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" aria-expanded="false">
+                How is BOS different from a simple breakout?
+                <svg class="faq-chevron" width="18" height="18" fill="none" viewBox="0 0 18 18"><path d="M4.5 6.75L9 11.25l4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="faq-a"><div class="faq-a-inner">A "breakout" in casual usage can mean almost any move through a level, including failed attempts and sweeps. BOS is a stricter, structurally defined event — it specifically requires a closed candle beyond a swing point in the direction of an already-established trend.</div></div>
+            </div>
+
+          </div>
+
+          <!-- PDF BOX -->
+          <div class="pdf-box reveal">
+            <div class="pdf-glow" aria-hidden="true"></div>
+            <div class="pdf-icon">
+              <svg width="26" height="26" fill="none" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M12 18v-6M9 15l3 3 3-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h2 class="pdf-title">Download Free PDF — BOS Guide</h2>
+            <p class="pdf-sub">Get the complete Break of Structure reference as a PDF — bullish and bearish BOS, entry models, and the BOS-vs-sweep checklist, all in one printable sheet.</p>
+            <div class="pdf-countdown" id="pdfCountdown">
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.4"/><path d="M8 5v3.5L10.5 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+              PDF unlocks in <span class="pdf-countdown-num" id="pdfNum">30</span> seconds
+            </div>
+            <a href="../bos.pdf" download class="btn btn-primary btn-lg pdf-download" id="pdfBtn">
+              <svg width="16" height="16" fill="none" viewBox="0 0 16 16"><path d="M8 3v7M8 10l-2.5-2.5M8 10l2.5-2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 13h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Download Free PDF
+            </a>
+          </div>
+
+          <!-- PREV / NEXT -->
+          <nav class="article-nav" aria-label="Article navigation">
+            <a href="../smc-introduction/" class="article-nav-card">
+              <span class="article-nav-label">← Previous</span>
+              <span class="article-nav-title">Market Structure</span>
+            </a>
+            <a href="../mss/" class="article-nav-card article-nav-card--next">
+              <span class="article-nav-label">Next →</span>
+              <span class="article-nav-title">MSS Guide</span>
+            </a>
+          </nav>
+
+        </article>
+
+        <!-- SIDEBAR -->
+        <aside class="article-sidebar" aria-label="Table of contents">
+          <div class="toc">
+            <div class="toc-title">On This Page</div>
+            <ul class="toc-list">
+              <li><a href="#what-is-bos">What Is BOS?</a></li>
+              <li><a href="#why-bos-matters">Why BOS Matters</a></li>
+              <li><a href="#bullish-bos">Bullish BOS</a></li>
+              <li><a href="#bearish-bos">Bearish BOS</a></li>
+              <li><a href="#bos-vs-sweep">BOS vs Liquidity Sweep</a></li>
+              <li><a href="#bos-vs-mss">BOS vs MSS</a></li>
+              <li><a href="#bos-market-structure">BOS and Market Structure</a></li>
+              <li><a href="#bos-entry-models">BOS Entry Models</a></li>
+              <li><a href="#real-examples">Real Trading Examples</a></li>
+              <li><a href="#common-mistakes">Common Mistakes</a></li>
+              <li><a href="#takeaways">Key Takeaways</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h3 class="sidebar-card-title">Next: MSS Guide</h3>
+            <p>Now that you can confirm continuation with BOS, learn to spot the first sign of a reversal — the Market Structure Shift.</p>
+            <a href="../mss/" class="btn btn-outline" style="width:100%;justify-content:center;">Read MSS Guide →</a>
+          </div>
+          <div class="sidebar-card" style="margin-top:16px;">
+            <h3 class="sidebar-card-title">Also See</h3>
+            <p style="margin-bottom:10px;"><a href="../smc-introduction/" style="color:var(--primary);">Market Structure →</a></p>
+            <p style="margin-bottom:10px;"><a href="../liquidity/" style="color:var(--primary);">Liquidity Masterclass →</a></p>
+            <p style="margin-bottom:10px;"><a href="../cisd/" style="color:var(--primary);">CISD Guide →</a></p>
+            <p><a href="../fvg/" style="color:var(--primary);">FVG Guide →</a></p>
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" aria-label="Site footer">
+  <div class="section-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="../" class="brand" aria-label="Sadik Finance home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <path d="M2 18L8 11L13 15L24 3" stroke="url(#gFoot)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M17 3H24V10" stroke="url(#gFoot)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs><linearGradient id="gFoot" x1="2" y1="18" x2="24" y2="3"><stop stop-color="#14F195"/><stop offset="1" stop-color="#00C2FF"/></linearGradient></defs>
+            </svg>
+          </span>
+          <span class="brand-name">Sadik<span class="brand-accent">Finance</span></span>
+        </a>
+        <p>Your structured hub for mastering ICT and Smart Money Concepts. Free PDFs, professional tools, and exclusive prop firm deals.</p>
+      </div>
+      <div>
+        <div class="footer-links">
+          <h4>Learn</h4>
+          <a href="../ict-concepts/">ICT Concepts</a>
+          <a href="../smc-introduction/">SMC Introduction</a>
+          <a href="../smc-introduction/">Market Structure</a>
+          <a href="../liquidity/">Liquidity Masterclass</a>
+          <a href="../bos/">BOS Guide</a>
+          <a href="../mss/">MSS Guide</a>
+          <a href="../cisd/">CISD Guide</a>
+          <a href="../fvg/">FVG Guide</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-links">
+          <h4>Tools</h4>
+          <a href="../#tools">Trading Journal</a>
+          <a href="../#tools">Risk Calculator</a>
+          <a href="../#tools">Position Sizer</a>
+          <a href="../#deals">Prop Firm Deals</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-links">
+          <h4>Community</h4>
+          <a href="../#newsletter">Newsletter</a>
+          <a href="#">Discord</a>
+          <a href="../about/">About Us</a>
+          <a href="../contact/">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Sadik Finance. Educational purposes only. Not financial advice.</span>
+      <span class="footer-built">Built for traders, by a <span>trader</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* Mobile menu */
+  var burger = document.getElementById('navBurger');
+  var mobileMenu = document.getElementById('mobileMenu');
+  if(burger && mobileMenu){
+    burger.addEventListener('click', function(){
+      var open = mobileMenu.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    mobileMenu.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        mobileMenu.classList.remove('open');
+        burger.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+
+  /* Scroll reveal — disabled on mobile (CSS handles visibility) */
+  var revealEls = document.querySelectorAll('.reveal');
+  var prm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if('IntersectionObserver' in window && !prm && window.innerWidth > 768){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  /* TOC active link highlight */
+  var tocLinks = document.querySelectorAll('.toc-list a');
+  if('IntersectionObserver' in window && tocLinks.length){
+    var headings = document.querySelectorAll('.article-body h2[id], .article-body h3[id]');
+    var hio = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          tocLinks.forEach(function(l){ l.classList.remove('active'); });
+          var active = document.querySelector('.toc-list a[href="#'+e.target.id+'"]');
+          if(active) active.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-10% 0px -80% 0px' });
+    headings.forEach(function(h){ hio.observe(h); });
+  }
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(o){ o.classList.remove('open'); o.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
+      if(!isOpen){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+  });
+
+  /* PDF countdown timer */
+  var pdfNum = document.getElementById('pdfNum');
+  var pdfBtn = document.getElementById('pdfBtn');
+  var pdfCountdown = document.getElementById('pdfCountdown');
+  if(pdfNum && pdfBtn){
+    var secs = 30;
+    var timer = setInterval(function(){
+      secs--;
+      pdfNum.textContent = secs;
+      if(secs <= 0){
+        clearInterval(timer);
+        pdfCountdown.style.display = 'none';
+        pdfBtn.classList.add('show');
+      }
+    }, 1000);
+  }
+
+})();
+</script>
+</body>
+</html>
